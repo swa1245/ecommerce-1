@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { toast } from 'react-hot-toast';
 import bootle from '../assests/bootle2.jpg';
-
+import vaccumBootle from '../assests/vaccumBootle.jpg';
 const BottleDetails = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();/
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
 
@@ -87,7 +87,7 @@ const BottleDetails = () => {
       category: "Temperature Bottle",
       price: 34.99,
       rating: 4.7,
-      image: "https://printo-s3.dietpixels.net/site/2024/Drinkware%201/New/1280/Black-1-_1726210537.jpg?quality=70&format=webp&w=640",
+      image: vaccumBootle,
       description: "Premium vacuum insulated temperature bottle",
       features: [
         "Advanced vacuum insulation",

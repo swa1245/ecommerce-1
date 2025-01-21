@@ -6,7 +6,7 @@ import ProductCard from '../ProductCard';
 import MugsBanner from '../banners/MugsBanner';
 import mug1 from '../assests/mug1.jpg';
 import mug2 from '../assests/mug2.jpg';
-import printedMug from '../assests/printedMug.jpg';
+import printedMug from '../assests/printedmug.jpg';
 
 const MugsPage = () => {
   const navigate = useNavigate();

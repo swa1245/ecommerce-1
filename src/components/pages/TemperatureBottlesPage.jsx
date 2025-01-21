@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useSearch } from '../../context/SearchContext';
 import ProductCard from '../ProductCard';
 import BottlesBanner from '../banners/BottlesBanner';
+import vaccumBootle from '../assests/vaccumBootle.jpg';
+import bootle from '../assests/bootle2.jpg';
+
 
 const TemperatureBottlesPage = () => {
   const navigate = useNavigate();
@@ -16,7 +19,7 @@ const TemperatureBottlesPage = () => {
       category: "Temperature Bottle",
       price: 29.99,
       rating: 4.8,
-      image: "https://images.unsplash.com/photo-1523362628745-0c100150b504?w=500&auto=format",
+      image: bootle,
       description: "Double-wall insulated temperature control bottle"
     },
     {
@@ -25,7 +28,7 @@ const TemperatureBottlesPage = () => {
       category: "Temperature Bottle",
       price: 34.99,
       rating: 4.7,
-      image: "https://printo-s3.dietpixels.net/site/2024/Drinkware%201/New/1280/Black-1-_1726210537.jpg?quality=70&format=webp&w=640",
+      image:vaccumBootle,
       description: "Premium vacuum insulated temperature bottle"
     }
   ];

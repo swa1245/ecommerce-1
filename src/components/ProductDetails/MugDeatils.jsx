@@ -5,8 +5,8 @@ import { useCart } from '../../context/CartContext';
 import { toast } from 'react-hot-toast';
 import mug1 from '../assests/mug1.jpg';
 import mug2 from '../assests/mug2.jpg';
-import printedMug from '../assests/printedMug.jpg';
-import mug4 from '../assests/mug4.jpg';
+import printedMug from '../assests/printedmug.jpg';
+// import mug4 from '../assests/mug4.jpg';
 
 const MugDetails = () => {
   const { id } = useParams();

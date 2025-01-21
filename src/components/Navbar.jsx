@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from '../context/CartContext';
 import { useFavorites } from '../context/FavoritesContext';
 import { useSearch } from '../context/SearchContext';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import FavoritesPage from "./pages/FavoritesPage";
 
 const Navbar = () => {
   const { cartItems } = useCart();
@@ -236,10 +237,10 @@ const Navbar = () => {
                 {
                   label: "Mugs",
                   subitems: [
-                    { name: "Plain Mug", path: "/mugs/plain" },
-                    { name: "3-Tone Mug", path: "/mugs/three-tone" },
-                    { name: "Magic Mug", path: "/mugs/magic" },
-                    { name: "Transparent Mug", path: "/mugs/transparent" }
+                    // { name: "Plain Mug", path: "/mugs/plain" },
+                    // { name: "3-Tone Mug", path: "/mugs/three-tone" },
+                    // { name: "Magic Mug", path: "/mugs/magic" },
+                    // { name: "Transparent Mug", path: "/mugs/transparent" }
                   ],
                   path: "/mugs"
                 },
@@ -329,7 +330,7 @@ const Navbar = () => {
         >
           <div className="absolute inset-0 bg-black bg-opacity-50" onClick={() => setIsFavoritesOpen(false)} />
           <div className="absolute right-0 top-0">
-            <Favorites onClose={() => setIsFavoritesOpen(false)} />
+            <FavoritesPage onClose={() => setIsFavoritesOpen(false)} />
           </div>
         </motion.div>
       )}
