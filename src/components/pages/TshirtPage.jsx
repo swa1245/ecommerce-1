@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useSearch } from '../../context/SearchContext';
 import ProductCard from '../ProductCard';
 import TshirtBanner from '../banners/TshirtBanner';
@@ -18,8 +18,9 @@ import polo5 from '../assests/polo5.jpg';
 
 const TshirtPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const { searchTerm } = useSearch();
+  const { searchTerm, filterProducts } = useSearch();
 
   const tshirts = [
     {
@@ -28,6 +29,7 @@ const TshirtPage = () => {
       category: "Round Neck T-shirt",
       price: 24.99,
       rating: 4.5,
+      tags: ["cotton", "casual", "round neck"],
       image: t1,
       description: "Premium cotton t-shirt with a comfortable fit"
     },
@@ -37,6 +39,7 @@ const TshirtPage = () => {
       category: "Sport T-shirt",
       price: 29.99,
       rating: 4.8,
+      tags: ["sport", "performance", "moisture-wicking"],
       image: t2,
       description: "Moisture-wicking sport t-shirt for active lifestyle"
     },
@@ -46,6 +49,7 @@ const TshirtPage = () => {
       category: "Graphic T-shirt",
       price: 27.99,
       rating: 4.6,
+      tags: ["urban", "street", "graphic"],
       image: t3,
       description: "Trendy graphic t-shirt with urban design"
     },
@@ -55,6 +59,7 @@ const TshirtPage = () => {
       category: "Round Neck T-shirt",
       price: 32.99,
       rating: 4.7,
+      tags: ["cotton", "round neck", "premium"],
       image: t4,
       description: "High-quality cotton t-shirt for everyday comfort"
     },
@@ -64,6 +69,7 @@ const TshirtPage = () => {
       category: "Designer T-shirt",
       price: 34.99,
       rating: 4.9,
+      tags: ["designer", "collection", "exclusive"],
       image: t5,
       description: "Exclusive designer t-shirt with unique patterns"
     },
@@ -73,6 +79,7 @@ const TshirtPage = () => {
       category: "Casual T-shirt",
       price: 26.99,
       rating: 4.6,
+      tags: ["casual", "comfort", "relaxed fit"],
       image: t6,
       description: "Comfortable casual t-shirt for daily wear"
     },
@@ -82,6 +89,7 @@ const TshirtPage = () => {
       category: "Collar T-shirt",
       price: 39.99,
       rating: 4.8,
+      tags: ["polo", "classic", "collar"],
       image: polo1,
       description: "Premium cotton polo t-shirt with perfect fit"
     },
@@ -91,6 +99,7 @@ const TshirtPage = () => {
       category: "Collar T-shirt",
       price: 44.99,
       rating: 4.7,
+      tags: ["business", "casual", "polo"],
       image: polo2,
       description: "Elegant polo t-shirt for business casual settings"
     },
@@ -100,6 +109,7 @@ const TshirtPage = () => {
       category: "Collar T-shirt",
       price: 49.99,
       rating: 4.9,
+      tags: ["sport", "performance", "polo"],
       image: polo3,
       description: "Athletic polo t-shirt with moisture-wicking fabric"
     },
@@ -109,6 +119,7 @@ const TshirtPage = () => {
       category: "Collar T-shirt",
       price: 42.99,
       rating: 4.6,
+      tags: ["premium", "cotton", "polo"],
       image: polo4,
       description: "High-quality cotton polo for superior comfort"
     },
@@ -118,76 +129,87 @@ const TshirtPage = () => {
       category: "Collar T-shirt",
       price: 54.99,
       rating: 4.8,
+      tags: ["designer", "polo", "collection"],
       image: polo5,
       description: "Exclusive designer polo t-shirt with premium finish"
     }
   ];
 
-  const categories = [
-    { id: 'all', name: 'All T-shirts' },
-    { id: 'Round Neck T-shirt', name: 'Round Neck' },
-    { id: 'Collar T-shirt', name: 'Collar T-shirt' },
-    { id: 'Sport T-shirt', name: 'Sport T-shirt' },
-    { id: 'Designer T-shirt', name: 'Designer' },
-    { id: 'Casual T-shirt', name: 'Casual' }
-  ];
+  // Filter products based on category and search term
+  const getFilteredProducts = () => {
+    let filtered = tshirts;
+    
+    // Apply category filter
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter(product => product.category === selectedCategory);
+    }
+    
+    // Apply search filter
+    return filterProducts(filtered);
+  };
 
-  const filteredTshirts = tshirts.filter(tshirt => {
-    const matchesCategory = selectedCategory === 'all' || tshirt.category === selectedCategory;
-    const matchesSearch = searchTerm === '' || 
-      tshirt.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      tshirt.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      tshirt.category.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filteredProducts = getFilteredProducts();
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Banner */}
       <TshirtBanner />
       
-      {/* Content */}
-      <div className="py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Category Filter */}
-        <div className="max-w-7xl mx-auto mb-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-wrap justify-center gap-4"
+        <div className="flex justify-center space-x-4 mb-8">
+          <button
+            onClick={() => setSelectedCategory('all')}
+            className={`px-4 py-2 rounded-lg ${
+              selectedCategory === 'all'
+                ? 'bg-indigo-600 text-white'
+                : 'bg-white text-gray-700 hover:bg-gray-50'
+            }`}
           >
-            {categories.map(category => (
-              <motion.button
-                key={category.id}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-2 rounded-full font-medium transition-colors duration-200 font-outfit ${
-                  selectedCategory === category.id
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                {category.name}
-              </motion.button>
-            ))}
-          </motion.div>
+            All T-shirts
+          </button>
+          <button
+            onClick={() => setSelectedCategory('Round Neck T-shirt')}
+            className={`px-4 py-2 rounded-lg ${
+              selectedCategory === 'Round Neck T-shirt'
+                ? 'bg-indigo-600 text-white'
+                : 'bg-white text-gray-700 hover:bg-gray-50'
+            }`}
+          >
+            Round Neck
+          </button>
+          <button
+            onClick={() => setSelectedCategory('Collar T-shirt')}
+            className={`px-4 py-2 rounded-lg ${
+              selectedCategory === 'Collar T-shirt'
+                ? 'bg-indigo-600 text-white'
+                : 'bg-white text-gray-700 hover:bg-gray-50'
+            }`}
+          >
+            Collar
+          </button>
         </div>
 
-        {/* Product Grid */}
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredTshirts.map((tshirt, index) => (
-              <motion.div
-                key={tshirt.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <ProductCard product={tshirt} />
-              </motion.div>
+        {/* Results Count */}
+        {searchTerm && (
+          <div className="text-center mb-8">
+            <p className="text-gray-600">
+              Found {filteredProducts.length} results for "{searchTerm}"
+            </p>
+          </div>
+        )}
+
+        {/* Products Grid */}
+        {filteredProducts.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg">No products found matching your criteria.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
+            {filteredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

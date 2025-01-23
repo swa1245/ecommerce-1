@@ -12,18 +12,6 @@ const Footer = () => {
       { name: 'Corporate', href: '/corporate' },
       { name: 'Kids', href: '/kids' },
     ],
-    company: [
-      { name: 'About Us', href: '#' },
-      { name: 'Careers', href: '#' },
-      { name: 'Contact', href: '#' },
-      { name: 'Blog', href: '#' },
-    ],
-    support: [
-      { name: 'Help Center', href: '#' },
-      { name: 'Terms of Service', href: '#' },
-      { name: 'Privacy Policy', href: '#' },
-      { name: 'Returns & Exchanges', href: '#' },
-    ],
     social: [
       {
         name: 'Facebook',
@@ -57,14 +45,10 @@ const Footer = () => {
 
   return (
     <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-white">
-      <div className="max-w-7xl mx-auto px-20 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Products */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-          >
+          <div>
             <h3 className="text-lg font-semibold mb-4 text-blue-400">Products</h3>
             <ul className="space-y-3">
               {footerLinks.products.map((link) => (
@@ -79,96 +63,42 @@ const Footer = () => {
                 </motion.li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          {/* Company */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <h3 className="text-lg font-semibold mb-4 text-blue-400">Company</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <motion.li
-                  key={link.name}
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+          {/* Contact */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4 text-blue-400">Contact Us</h3>
+            <p className="text-gray-300 mb-2">Email: copy@care.com</p>
+            <p className="text-gray-300">Phone: +1 (555) 123-4567</p>
+          </div>
+
+          {/* Social */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4 text-blue-400">Follow Us</h3>
+            <div className="flex space-x-4">
+              {footerLinks.social.map((item) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
-                  <Link to={link.href} className="text-gray-300 hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                </motion.li>
+                  <span className="sr-only">{item.name}</span>
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </motion.a>
               ))}
-            </ul>
-          </motion.div> */}
-
-          {/* Support */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <h3 className="text-lg font-semibold mb-4 text-blue-400">Support</h3>
-            <ul className="space-y-3">
-              {footerLinks.support.map((link) => (
-                <motion.li
-                  key={link.name}
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <Link to={link.href} className="text-gray-300 hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Contact & Social */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="space-y-6"
-          >
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-blue-400">Contact Us</h3>
-              <p className="text-gray-300 mb-2">Email: copy@care.com</p>
-              <p className="text-gray-300">Phone: +1 (555) 123-4567</p>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-blue-400">Follow Us</h3>
-              <div className="flex space-x-4">
-                {footerLinks.social.map((item) => (
-                  <motion.a
-                    key={item.name}
-                    href={item.href}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    <span className="sr-only">{item.name}</span>
-                    <item.icon className="h-6 w-6" aria-hidden="true" />
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Bottom Bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="mt-12 pt-8 border-t border-gray-700"
-        >
-          <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="mt-12 pt-8 border-t border-gray-700">
+          <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              &copy; {new Date().getFullYear()} Vista. All rights reserved.
+              &copy; {new Date().getFullYear()} Dw Innovation Pvt. Ltd. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
+            <div className="flex space-x-6 mt-4 sm:mt-0">
               <Link to="#" className="text-gray-400 hover:text-gray-300 text-sm">
                 Privacy Policy
               </Link>
@@ -180,7 +110,7 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

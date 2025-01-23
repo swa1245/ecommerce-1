@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useSearch } from '../../context/SearchContext';
 import ProductCard from '../ProductCard';
 import KidsBanner from '../banners/KidsBanner';
-import baby1 from '../assests/baby.jpg';
+// import baby1 from '../assests/baby.jpg';
+import baby1 from '../assests/baby1 (1).jpg';
+import baby2 from '../assests/baby2.jpg';
 
 
 const BabyRomperPage = () => {
@@ -13,14 +15,23 @@ const BabyRomperPage = () => {
 
   const romperProducts = [
     {
-      id: 1,
-      name: "Baby Romper Set - Blue",
-      category: "Baby Romper Set",
-      price: 34.99,
-      rating: 4.5,
+      id: 6,
+      name: "Baby Romper - White/Red",
+      category: "Romper",
+      price: 500,
+      rating: 4.8,
       image: baby1,
-      description: "Comfortable cotton romper set for babies"
+      description: "Polyester romper with red lining - For ages 3 months to 1 year"
     },
+    {
+      id: 7,
+      name: "Baby Romper - White/Blue",
+      category: "Romper",
+      price: 500,
+      rating: 4.8,
+      image: baby2,
+      description: "Polyester romper with blue lining - For ages 3 months to 1 year"
+    }
     // {
     //   id: 2,
     //   name: "Baby Romper Set - Pink",

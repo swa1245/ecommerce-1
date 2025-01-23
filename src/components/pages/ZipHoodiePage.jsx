@@ -24,15 +24,6 @@ const ZipHoodiePage = () => {
       description: "Premium zip-up hoodie for everyday comfort"
     },
     {
-      id: 3,
-      name: "Sport Zip Hoodie",
-      category: "Zip Hoodie",
-      price: 54.99,
-      rating: 4.6,
-      image: hoodie2,
-      description: "Athletic zip hoodie for active lifestyle"
-    },
-    {
       id: 5,
       name: "Modern Zip Hoodie",
       category: "Zip Hoodie",
@@ -40,15 +31,6 @@ const ZipHoodiePage = () => {
       rating: 4.7,
       image: hoodie3,
       description: "Modern style zip hoodie for urban look"
-    },
-    {
-      id: 7,
-      name: "Premium Zip Hoodie",
-      category: "Zip Hoodie",
-      price: 64.99,
-      rating: 4.8,
-      image: hoodie4,
-      description: "Premium quality zip hoodie with perfect fit"
     }
   ];
 

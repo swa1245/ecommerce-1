@@ -3,11 +3,15 @@ import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { toast } from 'react-hot-toast';
-import bootle from '../assests/bootle2.jpg';
 import vaccumBootle from '../assests/vaccumBootle.jpg';
+import tempBottle1 from '../assests/TempBottle1.jpg';
+import tempBottle2 from '../assests/TempBottle2.jpg';
+import tempBottle3 from '../assests/tempBottle.jpg';
+import tempBottle4 from '../assests/tempBottle (2).jpg';
+import customizeBottle from '../assests/CustomizeBottle.jpg';
+
 const BottleDetails = () => {
   const { id } = useParams();
-  // const navigate = useNavigate();/
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
 
@@ -18,8 +22,8 @@ const BottleDetails = () => {
       category: "Sublimation",
       price: 24.99,
       rating: 4.5,
-      image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&auto=format",
-      description: "High-quality sublimation water bottle",
+      image: customizeBottle,
+      description: "High-quality sublimation water bottle for custom designs",
       features: [
         "Premium grade stainless steel",
         "Double-wall insulation",
@@ -41,7 +45,7 @@ const BottleDetails = () => {
       category: "Temperature Bottle",
       price: 29.99,
       rating: 4.8,
-      image: bootle,
+      image: tempBottle1,
       description: "Double-wall insulated temperature control bottle",
       features: [
         "Triple-layer insulation",
@@ -53,8 +57,8 @@ const BottleDetails = () => {
       specifications: {
         "Material": "18/8 Stainless Steel",
         "Capacity": "1000ml",
-        "Cold Retention": "24 hours",
-        "Hot Retention": "12 hours",
+        "Height": "28cm",
+        "Diameter": "8cm",
         "Weight": "400g"
       }
     },
@@ -64,21 +68,21 @@ const BottleDetails = () => {
       category: "Sublimation",
       price: 22.99,
       rating: 4.6,
-      image: "https://images.unsplash.com/photo-1589365278144-c9e705f843ba?w=500&auto=format",
+      image: tempBottle2,
       description: "Lightweight sublimation bottle for sports",
       features: [
         "Lightweight design",
         "Easy-grip texture",
-        "One-handed operation",
-        "Dishwasher safe",
-        "Impact resistant"
+        "Quick-access flip cap",
+        "Sublimation printing surface",
+        "Sweat-proof exterior"
       ],
       specifications: {
-        "Material": "Tritan Plastic",
+        "Material": "Food-grade Stainless Steel",
         "Capacity": "500ml",
         "Height": "22cm",
         "Diameter": "6.5cm",
-        "Weight": "200g"
+        "Weight": "280g"
       }
     },
     4: {
@@ -91,17 +95,63 @@ const BottleDetails = () => {
       description: "Premium vacuum insulated temperature bottle",
       features: [
         "Advanced vacuum insulation",
-        "Scratch-resistant coating",
+        "Temperature lock technology",
+        "Premium steel construction",
         "Ergonomic design",
-        "Built-in temperature indicator",
-        "Lifetime warranty"
+        "48-hour temperature retention"
       ],
       specifications: {
-        "Material": "Premium Stainless Steel",
+        "Material": "Premium 18/8 Stainless Steel",
         "Capacity": "1200ml",
-        "Cold Retention": "36 hours",
-        "Hot Retention": "18 hours",
+        "Height": "30cm",
+        "Diameter": "8.5cm",
         "Weight": "450g"
+      }
+    },
+    5: {
+      id: 5,
+      name: "Modern Temperature Bottle",
+      category: "Temperature Bottle",
+      price: 32.99,
+      rating: 4.9,
+      image: tempBottle3,
+      description: "Modern design temperature-controlled bottle",
+      features: [
+        "Contemporary design",
+        "Smart temperature display",
+        "One-touch lid operation",
+        "Anti-slip base",
+        "36-hour insulation"
+      ],
+      specifications: {
+        "Material": "304 Stainless Steel",
+        "Capacity": "900ml",
+        "Height": "27cm",
+        "Diameter": "7.8cm",
+        "Weight": "380g"
+      }
+    },
+    6: {
+      id: 6,
+      name: "Elite Sublimation Bottle",
+      category: "Sublimation",
+      price: 27.99,
+      rating: 4.8,
+      image: tempBottle4,
+      description: "Elite grade sublimation bottle for professional use",
+      features: [
+        "Professional-grade construction",
+        "Enhanced sublimation surface",
+        "Premium insulation",
+        "Secure-lock lid",
+        "Scratch-resistant coating"
+      ],
+      specifications: {
+        "Material": "High-grade Stainless Steel",
+        "Capacity": "800ml",
+        "Height": "25cm",
+        "Diameter": "7.2cm",
+        "Weight": "360g"
       }
     }
   };

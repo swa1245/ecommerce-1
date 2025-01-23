@@ -14,15 +14,7 @@ const WithoutZipHoodiePage = () => {
   const { searchTerm } = useSearch();
 
   const withoutZipHoodies = [
-    {
-      id: 2,
-      name: "Classic Pullover Hoodie",
-      category: "Without Zip Hoodie",
-      price: 44.99,
-      rating: 4.8,
-      image: hoodie1,
-      description: "Classic pullover hoodie with kangaroo pocket"
-    },
+    
     {
       id: 4,
       name: "Comfort Fit Hoodie",

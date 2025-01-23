@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSearch } from '../../context/SearchContext';
 import ProductCard from '../ProductCard';
 import MugsBanner from '../banners/MugsBanner';
+import threeToneMug2 from '../assests/3ToneMug (2).jpg';
 
 const ThreeToneMugPage = () => {
   const navigate = useNavigate();
@@ -12,13 +13,14 @@ const ThreeToneMugPage = () => {
   const threeToneMugs = [
     {
       id: 3,
-      name: "Three-Tone Designer Mug",
-      category: "3-Tone Mug",
-      price: 17.99,
-      rating: 4.6,
-      image: "https://images.unsplash.com/photo-1529586587093-ad0e284dbf01?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8",
-      description: "Stylish three-tone ceramic mug"
+      name: "Premium 3-Tone Mug",
+      category: "Magic Mugs",
+      price: 399,
+      rating: 4.7,
+      image: threeToneMug2,
+      description: "Premium color-changing mug with metallic finish"
     }
+    
   ];
 
   const filteredMugs = threeToneMugs.filter(mug =>

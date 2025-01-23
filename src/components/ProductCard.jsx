@@ -12,6 +12,10 @@ const ProductCard = ({ product }) => {
   
   const isProductFavorite = isFavorite(product.id);
 
+  const formatPrice = (price) => {
+    return `₹${price}`;
+  };
+
   const handleAddToCart = (e) => {
     e.stopPropagation();
     addToCart({
@@ -178,11 +182,11 @@ const ProductCard = ({ product }) => {
           <div className="flex items-center justify-between pt-3">
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-bold text-gray-900">
-                ${product.price}
+                {formatPrice(product.price)}
               </span>
               {product.oldPrice && (
                 <span className="text-sm text-gray-500 line-through">
-                  ${product.oldPrice}
+                  {formatPrice(product.oldPrice)}
                 </span>
               )}
             </div>
@@ -191,6 +195,14 @@ const ProductCard = ({ product }) => {
             </span>
           </div>
         </div>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleAddToCart}
+          className="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200"
+        >
+          Add to Cart
+        </motion.button>
       </div>
     </motion.div>
   );

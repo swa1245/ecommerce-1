@@ -20,15 +20,6 @@ const CorporatePensPage = () => {
       rating: 4.6,
       image: pen,
       description: "Luxury metal pen set for professionals"
-    },
-    {
-      id: 8,
-      name: "Custom Logo Pen Bundle",
-      category: "Pens",
-      price: 19.99,
-      rating: 4.5,
-      image: pen,
-      description: "Customizable corporate pens with logo"
     }
   ];
 

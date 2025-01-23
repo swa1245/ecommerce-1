@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const SearchContext = createContext();
 
@@ -13,22 +12,27 @@ export const useSearch = () => {
 
 export const SearchProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const navigate = useNavigate();
 
-  const performGlobalSearch = (term) => {
-    setSearchTerm(term);
-    if (term.trim()) {
-      navigate('/search');
-    }
+  const filterProducts = (products, term = searchTerm) => {
+    if (!term.trim()) return products;
+    
+    const searchLower = term.toLowerCase().trim();
+    return products.filter(product => {
+      const searchFields = [
+        product.name,
+        product.description,
+        product.category,
+        ...(product.tags || []),
+      ].map(field => (field || '').toLowerCase());
+
+      return searchFields.some(field => field.includes(searchLower));
+    });
   };
 
   const value = {
     searchTerm,
     setSearchTerm,
-    performGlobalSearch,
-    searchResults,
-    setSearchResults
+    filterProducts
   };
 
   return (

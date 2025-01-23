@@ -1,16 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useSearch } from '../../context/SearchContext';
 import ProductCard from '../ProductCard';
 import BottlesBanner from '../banners/BottlesBanner';
 import vaccumBootle from '../assests/vaccumBootle.jpg';
-import bootle from '../assests/bootle2.jpg';
+import tempBottle1 from '../assests/TempBottle1.jpg';
+import tempBottle2 from '../assests/TempBottle2.jpg';
+import tempBottle3 from '../assests/tempBottle.jpg';
+import tempBottle4 from '../assests/tempBottle (2).jpg';
+import customizeBottle from '../assests/CustomizeBottle.jpg';
 
 const BottlesPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const { searchTerm } = useSearch();
+
+  // Get category from URL query parameter
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const categoryParam = params.get('category');
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [location.search]);
 
   const bottles = [
     {
@@ -19,8 +33,8 @@ const BottlesPage = () => {
       category: "Sublimation",
       price: 24.99,
       rating: 4.5,
-      image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&auto=format",
-      description: "High-quality sublimation water bottle"
+      image: customizeBottle,
+      description: "High-quality sublimation water bottle for custom designs"
     },
     {
       id: 2,
@@ -28,7 +42,7 @@ const BottlesPage = () => {
       category: "Temperature Bottle",
       price: 29.99,
       rating: 4.8,
-      image: bootle,
+      image: tempBottle1,
       description: "Double-wall insulated temperature control bottle"
     },
     {
@@ -37,7 +51,7 @@ const BottlesPage = () => {
       category: "Sublimation",
       price: 22.99,
       rating: 4.6,
-      image: "https://images.unsplash.com/photo-1589365278144-c9e705f843ba?w=500&auto=format",
+      image: tempBottle2,
       description: "Lightweight sublimation bottle for sports"
     },
     {
@@ -48,55 +62,75 @@ const BottlesPage = () => {
       rating: 4.7,
       image: vaccumBootle,
       description: "Premium vacuum insulated temperature bottle"
+    },
+    {
+      id: 5,
+      name: "Modern Temperature Bottle",
+      category: "Temperature Bottle",
+      price: 32.99,
+      rating: 4.9,
+      image: tempBottle3,
+      description: "Modern design temperature-controlled bottle"
+    },
+    {
+      id: 6,
+      name: "Elite Sublimation Bottle",
+      category: "Sublimation",
+      price: 27.99,
+      rating: 4.8,
+      image: tempBottle4,
+      description: "Elite grade sublimation bottle for professional use"
     }
   ];
 
   const categories = [
     { id: 'all', name: 'All Bottles' },
-    { id: 'Sublimation', name: 'Sublimation' },
-    { id: 'Temperature Bottle', name: 'Temperature Bottle' }
+    { id: 'Sublimation', name: 'Sublimation Bottles' },
+    { id: 'Temperature Bottle', name: 'Temperature Bottles' }
   ];
 
-  const filteredBottles = bottles.filter(bottle => {
-    const matchesCategory = selectedCategory === 'all' || bottle.category === selectedCategory;
-    const matchesSearch = searchTerm === '' || 
-      bottle.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      bottle.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      bottle.category.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filteredBottles = bottles.filter(bottle => 
+    (selectedCategory === 'all' || bottle.category === selectedCategory) &&
+    (searchTerm === '' || 
+    bottle.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    bottle.description.toLowerCase().includes(searchTerm.toLowerCase()))
+  );
 
   return (
     <div className="min-h-screen bg-gray-50">
       <BottlesBanner />
       
       <div className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto mb-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+        <div className="max-w-7xl mx-auto">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex flex-wrap justify-center gap-4"
+            className="text-3xl font-bold text-center mb-8 font-outfit"
           >
-            {categories.map(category => (
-              <motion.button
+            {selectedCategory === 'all' ? 'All Bottles' : selectedCategory}
+          </motion.h1>
+
+          {/* Category Pills */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {categories.map((category) => (
+              <button
                 key={category.id}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-2 rounded-full font-medium transition-colors duration-200 font-outfit ${
+                onClick={() => {
+                  setSelectedCategory(category.id);
+                  navigate(category.id === 'all' ? '/bottles' : `/bottles?category=${category.id}`);
+                }}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
                   selectedCategory === category.id
                     ? 'bg-blue-600 text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                    : 'bg-white text-gray-600 hover:bg-gray-50'
                 }`}
               >
                 {category.name}
-              </motion.button>
+              </button>
             ))}
-          </motion.div>
-        </div>
+          </div>
 
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredBottles.map((bottle, index) => (
               <motion.div
                 key={bottle.id}
@@ -104,7 +138,6 @@ const BottlesPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 onClick={() => navigate(`/bottles/${bottle.id}`)}
-                className="cursor-pointer"
               >
                 <ProductCard product={bottle} />
               </motion.div>

@@ -11,7 +11,7 @@ import Banner from './components/Banner'
 import TshirtPage from './components/pages/TshirtPage'
 import RoundNeckTshirtPage from './components/pages/RoundNeckTshirtPage'
 import CollarTshirtPage from './components/pages/CollarTshirtPage'
-import OversizedTshirtPage from './components/pages/OversizedTshirtPage'
+// import OversizedTshirtPage from './components/pages/OversizedTshirtPage'
 import HoodiesPage from './components/pages/HoodiesPage'
 import ZipHoodiePage from './components/pages/ZipHoodiePage'
 import WithoutZipHoodiePage from './components/pages/WithoutZipHoodiePage'
@@ -28,7 +28,7 @@ import CorporatePage from './components/pages/CorporatePage'
 import FavoritesPage from './components/pages/FavoritesPage'
 import HoodieDetails from './components/ProductDetails/HoodieDetails'
 import TshirtDetails from './components/ProductDetails/TshirtDetails'
-import MugDetails from './components/ProductDetails/MugDeatils'
+import MugDetails from './components/ProductDetails/MugDetails'
 import BottleDetails from './components/ProductDetails/BottleDetails'
 import CorporateDetails from './components/ProductDetails/CorporateDetails'
 import SearchResults from './components/pages/SearchResults'
@@ -44,6 +44,14 @@ import DiaryPage from './components/pages/DiaryPage'
 import BabyRomperDetails from './components/ProductDetails/BabyRomperDetails'
 import KidsTshirtDetails from './components/ProductDetails/KidsTshirtDetails'
 import ScrollTop from './ScrollTop'
+import OtherProductsPage from './components/pages/OtherProductsPage'
+import CapDetails from './components/ProductDetails/CapDetails';
+import FurPillowPage from './components/pages/FurPillowPage';
+import FurPillowDetails from './components/ProductDetails/FurPillowDetails';
+import MirrorProductsPage from './components/pages/MirrorProductsPage'
+import CustomRakhiPage from './components/pages/CustomRakhiPage'
+import MirrorDetails from './components/ProductDetails/MirrorDetails'
+import RakhiDetails from './components/ProductDetails/RakhiDetails';
 
 const AppContent = () => {
   const location = useLocation();
@@ -52,12 +60,12 @@ const AppContent = () => {
 
   return (
     <div className="flex flex-col min-h-screen   overflow-hidden">
-      <ScrollTop/>
+      <ScrollTop />
       {!hideNavbar && <Navbar />}
       {isHome && <Banner />}
       <main className={`flex-grow ${hideNavbar ? 'bg-gray-50' : ''}`}>
         <Routes>
-        
+
           <Route path="/" element={<Hero />} />
           <Route path="/search" element={<SearchResults />} />
           <Route path="/signin" element={<SignIn />} />
@@ -66,7 +74,6 @@ const AppContent = () => {
           <Route path="/tshirts" element={<TshirtPage />} />
           <Route path="/tshirts/round-neck" element={<RoundNeckTshirtPage />} />
           <Route path="/tshirts/collar" element={<CollarTshirtPage />} />
-          <Route path="/tshirts/oversized" element={<OversizedTshirtPage />} />
           <Route path="/tshirts/:id" element={<TshirtDetails />} />
           <Route path="/hoodies" element={<HoodiesPage />} />
           <Route path="/hoodies/zip" element={<ZipHoodiePage />} />
@@ -78,6 +85,7 @@ const AppContent = () => {
           <Route path="/mugs/magic" element={<MagicMugPage />} />
           <Route path="/mugs/transparent" element={<TransparentMugPage />} />
           <Route path="/mugs/:id" element={<MugDetails />} />
+
           <Route path="/bottles" element={<BottlesPage />} />
           <Route path="/bottles/sublimation" element={<SublimationBottlesPage />} />
           <Route path="/bottles/temperature" element={<TemperatureBottlesPage />} />
@@ -95,6 +103,15 @@ const AppContent = () => {
           <Route path="/corporate/welcome-kit" element={<WelcomeKitPage />} />
           <Route path="/corporate/diary" element={<DiaryPage />} />
           <Route path="/corporate/:id" element={<CorporateDetails />} />
+          <Route path="/fur-pillows" element={<FurPillowPage />} />
+          <Route path="/fur-pillows/:id" element={<FurPillowDetails />} />
+          <Route path="/other-products" element={<OtherProductsPage />} />
+          <Route path="/other-products/cap" element={<CapDetails />} />
+          <Route path="/other-products/mirrors" element={<MirrorProductsPage />} />
+          <Route path="/other-products/mirrors/:id" element={<MirrorDetails />} />
+          <Route path="/other-products/rakhis" element={<CustomRakhiPage />} />
+          <Route path="/other-products/rakhis/:id" element={<RakhiDetails />} />
+          <Route path="/otherproducts" element={<OtherProductsPage />} />
         </Routes>
       </main>
       <Footer />

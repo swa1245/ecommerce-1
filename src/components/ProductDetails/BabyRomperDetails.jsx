@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useCart } from '../../context/CartContext';
 import { toast } from 'react-hot-toast';
-
 const BabyRomperDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -15,6 +14,13 @@ const BabyRomperDetails = () => {
     navigate('/baby-romper');
     return null;
   }
+
+  const sizeOptions = [
+    '3-6 Months',
+    '6-9 Months',
+    '9-12 Months',
+    '12 Months'
+  ];
 
   const handleAddToCart = () => {
     if (!selectedSize) {
@@ -69,21 +75,19 @@ const BabyRomperDetails = () => {
               <p className="mt-2 text-base text-gray-500">{product.description}</p>
             </div>
 
-            {/* Size Selector */}
+            {/* Size Selection */}
             <div className="mt-6">
-              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-medium text-gray-900">Select Size</h3>
-              </div>
-              <div className="grid grid-cols-4 gap-4 mt-4">
-                {product.sizes?.map((size) => (
+              <h3 className="text-sm font-medium text-gray-900">Size</h3>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 mt-2">
+                {sizeOptions.map((size) => (
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
                     className={`${
                       selectedSize === size
-                        ? 'bg-blue-600 text-white'
+                        ? 'bg-indigo-600 text-white'
                         : 'bg-white text-gray-900 hover:bg-gray-50'
-                    } border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase focus:outline-none`}
+                    } px-4 py-2 border rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
                   >
                     {size}
                   </button>

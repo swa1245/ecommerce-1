@@ -18,15 +18,6 @@ const WelcomeKitPage = () => {
       rating: 4.7,
       image: "https://th.bing.com/th/id/OIP.OJEDMc2jdenw2W8CNs3eUwHaE8?rs=1&pid=ImgDetMain?w=500&auto=format",
       description: "Complete employee welcome kit"
-    },
-    {
-      id: 9,
-      name: "Premium Welcome Package",
-      category: "Employee Welcome Kit",
-      price: 69.99,
-      rating: 4.8,
-      image: "https://th.bing.com/th/id/OIP.OJEDMc2jdenw2W8CNs3eUwHaE8?rs=1&pid=ImgDetMain",
-      description: "Deluxe employee onboarding kit"
     }
   ];
 

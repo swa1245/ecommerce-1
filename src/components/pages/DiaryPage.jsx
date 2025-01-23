@@ -18,15 +18,6 @@ const DiaryPage = () => {
       rating: 4.9,
       image: "https://th.bing.com/th/id/OIP.L7DwdbrsHah3mDtRxFcqdwAAAA?rs=1&pid=ImgDetMain?w=500&auto=format?w=500&auto=format",
       description: "Premium leather corporate diary"
-    },
-    {
-      id: 10,
-      name: "Custom Logo Planner",
-      category: "Diary",
-      price: 29.99,
-      rating: 4.7,
-      image: "https://th.bing.com/th/id/OIP.L7DwdbrsHah3mDtRxFcqdwAAAA?rs=1&pid=ImgDetMain?w=500&auto=format?rs=1&pid=ImgDetMain",
-      description: "Customizable corporate planner with logo"
     }
   ];
 

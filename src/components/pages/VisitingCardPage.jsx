@@ -18,15 +18,6 @@ const VisitingCardPage = () => {
       rating: 4.8,
       image: "https://th.bing.com/th/id/OIP.O5LlCxcxVSof_Foj8w43XwAAAA?rs=1&pid=ImgDetMain?w=500&auto=format",
       description: "Premium finish business cards, pack of 100"
-    },
-    {
-      id: 7,
-      name: "Luxury Metal Business Cards",
-      category: "Visiting Card",
-      price: 34.99,
-      rating: 4.9,
-      image: "https://th.bing.com/th/id/OIP.O5LlCxcxVSof_Foj8w43XwAAAA?rs=1&pid=ImgDetMain",
-      description: "Metal finish premium business cards"
     }
   ];
 

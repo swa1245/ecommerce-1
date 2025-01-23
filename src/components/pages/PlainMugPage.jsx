@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useSearch } from '../../context/SearchContext';
 import ProductCard from '../ProductCard';
+import whiteMug from '../assests/whiteMug.jpg';
 import MugsBanner from '../banners/MugsBanner';
 
 const PlainMugPage = () => {
@@ -13,12 +14,12 @@ const PlainMugPage = () => {
     {
       id: 1,
       name: "Classic White Mug",
-      category: "Plain Mug",
-      price: 14.99,
+      category: "Plain Mugs",
+      price: 199,
       rating: 4.5,
-      image: "https://images.unsplash.com/photo-1481973946307-512988dde8b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bXVnfGVufDB8fDB8fHww",
-      description: "Simple and elegant white ceramic mug"
-    }
+      image: whiteMug,
+      description: "Premium quality white ceramic mug for everyday use"
+    },
   ];
 
   const filteredMugs = plainMugs.filter(mug =>

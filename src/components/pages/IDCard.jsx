@@ -18,15 +18,6 @@ const IDCard = () => {
       rating: 4.5,
       image: "https://www.mockupworld.co/wp-content/uploads/dynamic/2022/10/id-card-lanyard-free-mockup-psd-536x0-c-default.jpg?w=500&auto=format",
       description: "High-quality ID card with custom lanyard"
-    },
-    {
-      id: 6,
-      name: "Custom Photo ID Card",
-      category: "ID Card and Lanyard",
-      price: 7.99,
-      rating: 4.4,
-      image: "https://th.bing.com/th/id/OIP.O5LlCxcxVSof_Foj8w43XwAAAA?rs=1&pid=ImgDetMain",
-      description: "Personalized photo ID card with holder"
     }
   ];
 

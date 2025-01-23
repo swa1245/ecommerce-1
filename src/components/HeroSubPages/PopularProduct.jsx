@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProductCard from '../ProductCard';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
+import { toast } from 'react-hot-toast';
 import polo1 from '../assests/polo1.jpg';
 import hoodie1 from '../assests/hoodie1.jpg';
 import vaccumBootle from '../assests/vaccumBootle.jpg';
@@ -9,6 +11,7 @@ import bootle2 from '../assests/bootle2.jpg';
 
 const PopularProduct = () => {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
   const [activeCategory, setActiveCategory] = useState('All');
   const categories = ['All', 'T-Shirts', 'Hoodies', 'Mugs', 'Accessories'];
   
@@ -67,53 +70,34 @@ const PopularProduct = () => {
     }
   };
 
+  const handleAddToCart = (e, product) => {
+    e.stopPropagation(); // Prevent navigation when clicking add to cart
+    addToCart(product);
+    toast.success('Added to cart successfully!');
+  };
+
   const filteredProducts = activeCategory === 'All' 
     ? products 
     : products.filter(product => product.category === activeCategory);
 
   return (
     <section className="py-24 w-screen px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-      <div className=" mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-block mb-4 px-4 py-1.5 bg-blue-50 rounded-full"
-          >
-            <span className="text-sm font-semibold text-blue-600">
-              Featured Collection
-            </span>
-          </motion.div>
-          <motion.h2 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-outfit"
-          >
-            Popular Products
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
-          >
-            Discover our most loved items that combine style, quality, and value
-          </motion.p>
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">Popular Products</h2>
+          <p className="mt-4 text-lg text-gray-600">Check out our most popular items</p>
         </div>
 
-        {/* Categories */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {categories.map((category, index) => (
+        {/* Category Filter */}
+        <div className="flex justify-center space-x-4 mt-12 mb-16">
+          {categories.map((category) => (
             <motion.button
               key={category}
-              whileHover={{ scale: 1.05, y: -2 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                delay: index * 0.1,
+              transition={{
                 type: "spring",
                 stiffness: 500,
                 damping: 30
@@ -129,7 +113,7 @@ const PopularProduct = () => {
           ))}
         </div>
 
-        {/* Products Grid */}
+        {/* Product Grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeCategory}
@@ -163,10 +147,9 @@ const PopularProduct = () => {
                     }
                   }
                 }}
-                onClick={() => handleProductClick(product)}
                 className="cursor-pointer"
               >
-                <ProductCard product={product} />
+                <ProductCard product={product} handleAddToCart={(e) => handleAddToCart(e, product)} />
               </motion.div>
             ))}
           </motion.div>
