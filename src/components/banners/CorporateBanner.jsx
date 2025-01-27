@@ -10,7 +10,7 @@ const CorporateBanner = () => {
       className="relative h-[400px] w-full overflow-hidden"
     >
       <motion.div 
-        initial={{ scale: 1.2 }}
+        // initial={{ scale: 1.2 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

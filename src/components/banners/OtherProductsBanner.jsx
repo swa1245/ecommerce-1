@@ -8,7 +8,7 @@ const OtherProductsBanner = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://img.freepik.com/free-photo/mirror-with-christmas-decor-gifts_1252-290.jpg?t=st=1737634309~exp=1737637909~hmac=cc0295da001f1aaaa86e15242e53b42a740c993c12c492acfefb30cd7726199d&w=1380')`,
+          backgroundImage: `url('https://img.freepik.com/free-photo/mirror-with-christmas-decor-gifts_1252-290.jpg?uid=R182552511&ga=GA1.1.373861391.1735111696&semt=ais_hybrid')`,
         }}
       >
         {/* Overlay */}

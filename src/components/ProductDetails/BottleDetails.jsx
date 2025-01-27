@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { toast } from 'react-hot-toast';
 import vaccumBootle from '../assests/vaccumBootle.jpg';
@@ -12,6 +12,7 @@ import customizeBottle from '../assests/CustomizeBottle.jpg';
 
 const BottleDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
 
@@ -170,126 +171,149 @@ const BottleDetails = () => {
     toast.success('Added to cart!');
   };
 
+  const handleBack = () => {
+    navigate(-1); // This will go back to the previous page
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
-            {/* Product Image */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <img
-                src={bottle.image}
-                alt={bottle.name}
-                className="w-full h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </motion.div>
+        {/* Back Button */}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleBack}
+          className="mb-6 flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200"
+        >
+          <svg
+            className="w-5 h-5 mr-2"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back
+        </motion.button>
 
-            {/* Product Info */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-6"
-            >
-              <h1 className="text-3xl font-bold text-gray-900">{bottle.name}</h1>
+        <div className="lg:grid lg:grid-cols-2 lg:gap-8">
+          {/* Product Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <img
+              src={bottle.image}
+              alt={bottle.name}
+              className="w-full h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+            />
+          </motion.div>
+
+          {/* Product Info */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-6"
+          >
+            <h1 className="text-3xl font-bold text-gray-900">{bottle.name}</h1>
+            <div className="flex items-center space-x-2">
+              <span className="text-2xl font-bold text-blue-600">${bottle.price}</span>
+              <span className="text-sm text-gray-500">/unit</span>
+            </div>
+            
+            <div className="flex items-center">
+              {[...Array(5)].map((_, i) => (
+                <svg
+                  key={i}
+                  className={`w-5 h-5 ${
+                    i < bottle.rating ? 'text-yellow-400' : 'text-gray-300'
+                  }`}
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+              <span className="ml-2 text-gray-600">({bottle.rating})</span>
+            </div>
+
+            <p className="text-gray-600">{bottle.description}</p>
+
+            {/* Quantity Selector */}
+            <div className="flex items-center space-x-4">
+              <label className="text-gray-700">Quantity:</label>
               <div className="flex items-center space-x-2">
-                <span className="text-2xl font-bold text-blue-600">${bottle.price}</span>
-                <span className="text-sm text-gray-500">/unit</span>
+                <button
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  className="p-2 rounded-md bg-gray-100 hover:bg-gray-200"
+                >
+                  -
+                </button>
+                <span className="w-8 text-center">{quantity}</span>
+                <button
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="p-2 rounded-md bg-gray-100 hover:bg-gray-200"
+                >
+                  +
+                </button>
               </div>
-              
-              <div className="flex items-center">
-                {[...Array(5)].map((_, i) => (
-                  <svg
-                    key={i}
-                    className={`w-5 h-5 ${
-                      i < bottle.rating ? 'text-yellow-400' : 'text-gray-300'
-                    }`}
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
+            </div>
+
+            {/* Features */}
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Key Features</h2>
+              <ul className="space-y-2">
+                {bottle.features.map((feature, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-center space-x-2"
                   >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
+                    <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{feature}</span>
+                  </motion.li>
                 ))}
-                <span className="ml-2 text-gray-600">({bottle.rating})</span>
-              </div>
+              </ul>
+            </div>
 
-              <p className="text-gray-600">{bottle.description}</p>
-
-              {/* Quantity Selector */}
-              <div className="flex items-center space-x-4">
-                <label className="text-gray-700">Quantity:</label>
-                <div className="flex items-center space-x-2">
-                  <button
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="p-2 rounded-md bg-gray-100 hover:bg-gray-200"
+            {/* Specifications */}
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Specifications</h2>
+              <div className="grid grid-cols-2 gap-4">
+                {Object.entries(bottle.specifications).map(([key, value], index) => (
+                  <motion.div
+                    key={key}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="text-sm"
                   >
-                    -
-                  </button>
-                  <span className="w-8 text-center">{quantity}</span>
-                  <button
-                    onClick={() => setQuantity(quantity + 1)}
-                    className="p-2 rounded-md bg-gray-100 hover:bg-gray-200"
-                  >
-                    +
-                  </button>
-                </div>
+                    <span className="font-medium text-gray-900">{key}:</span>
+                    <span className="ml-2 text-gray-600">{value}</span>
+                  </motion.div>
+                ))}
               </div>
+            </div>
 
-              {/* Features */}
-              <div>
-                <h2 className="text-xl font-semibold text-gray-900 mb-4">Key Features</h2>
-                <ul className="space-y-2">
-                  {bottle.features.map((feature, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center space-x-2"
-                    >
-                      <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>{feature}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Specifications */}
-              <div>
-                <h2 className="text-xl font-semibold text-gray-900 mb-4">Specifications</h2>
-                <div className="grid grid-cols-2 gap-4">
-                  {Object.entries(bottle.specifications).map(([key, value], index) => (
-                    <motion.div
-                      key={key}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="text-sm"
-                    >
-                      <span className="font-medium text-gray-900">{key}:</span>
-                      <span className="ml-2 text-gray-600">{value}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Add to Cart Button */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={handleAddToCart}
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
-              >
-                Add to Cart
-              </motion.button>
-            </motion.div>
-          </div>
+            {/* Add to Cart Button */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleAddToCart}
+              className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
+            >
+              Add to Cart
+            </motion.button>
+          </motion.div>
         </div>
       </div>
     </div>

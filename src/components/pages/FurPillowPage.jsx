@@ -70,15 +70,6 @@ const FurPillowPage = () => {
       rating: 5.0,
       image: teddy,
       description: "Premium quality teddy pillow for ultimate comfort"
-    },
-    {
-      id: 6,
-      name: "Luxury Teddy Pillow",
-      category: "Premium Pillows",
-      price: 799,
-      rating: 4.8,
-      image: teddy2,
-      description: "Luxury teddy pillow with extra softness"
     }
   ];
 

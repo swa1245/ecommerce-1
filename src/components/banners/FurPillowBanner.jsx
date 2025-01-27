@@ -8,7 +8,7 @@ const FurPillowBanner = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://img.freepik.com/free-photo/tropical-bed-pillow-sea-terrace_1203-3824.jpg?t=st=1737634177~exp=1737637777~hmac=29cb066d6287ee2bc393c5ec3e5cc3175fec3c6a7a2152e7b08a3cb787014a12&w=1380')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1612152668323-b7f49335ebde?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBpbGxvd3xlbnwwfHwwfHx8MA%3D%3D')`,
         }}
       >
         {/* Overlay */}

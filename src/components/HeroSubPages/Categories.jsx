@@ -8,6 +8,7 @@ import corporate from '../assests/corporate.jpg';
 import mug4 from '../assests/mug4.jpg';
 import vaccumBootle from '../assests/vaccumBootle.jpg';
 import KeyChain from '../assests/Kitchen.jpg';
+import pillowDesign from '../assests/pillowdesign.jpg';
 
 const Categories = () => {
   const [hoveredCategory, setHoveredCategory] = useState(null);
@@ -69,10 +70,19 @@ const Categories = () => {
     },
     {
       id: 7,
+      name: 'Fur Pillows',
+      image: pillowDesign ,
+      description: 'Visit Our Other Product Categories.',
+      count: '60+ Items',
+      path: '/fur-pillows',
+      accent: '#EFF6FF'
+    },
+    {
+      id: 8,
       name: 'Other Products',
       image: KeyChain,
       description: 'Visit Our Other Product Categories.',
-      count: '90+ Items',
+      count: '50+ Items',
       path: '/otherproducts',
       accent: '#EFF6FF'
     }

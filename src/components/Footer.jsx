@@ -96,7 +96,7 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-gray-700">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              &copy; {new Date().getFullYear()} Dw Innovation Pvt. Ltd. All rights reserved.
+              &copy; {new Date().getFullYear()} Developed by Dw Innovation Pvt. Ltd. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 sm:mt-0">
               <Link to="#" className="text-gray-400 hover:text-gray-300 text-sm">

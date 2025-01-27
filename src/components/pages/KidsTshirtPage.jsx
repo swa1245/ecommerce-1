@@ -72,6 +72,19 @@ const KidsTshirtPage = () => {
     product.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleProductClick = (product) => {
+    navigate(`/kids/tshirt/${product.id}`, {
+      state: { 
+        product: {
+          ...product,
+          quantity: 1,
+          selectedSize: '',
+          oldPrice: product.price * 1.2 // Adding a 20% markup for original price
+        }
+      }
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <KidsBanner />
@@ -93,15 +106,30 @@ const KidsTshirtPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                onClick={() => navigate(`/kids/tshirt/${product.id}`, {
-                  state: { product }
-                })}
+                onClick={() => handleProductClick(product)}
                 className="cursor-pointer transform transition-transform hover:scale-105"
               >
-                <ProductCard product={product} />
+                <ProductCard 
+                  product={{
+                    ...product,
+                    oldPrice: product.price * 1.2 // Adding a 20% markup for original price
+                  }} 
+                />
               </motion.div>
             ))}
           </div>
+
+          {filteredProducts.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center py-12"
+            >
+              <h3 className="text-xl text-gray-600">
+                No products found matching "{searchTerm}"
+              </h3>
+            </motion.div>
+          )}
         </div>
       </div>
     </div>

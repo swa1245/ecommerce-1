@@ -73,6 +73,12 @@ const MirrorDetails = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <h2 className="text-2xl font-semibold text-gray-800">Product not found</h2>
+        <button
+            onClick={() => navigate('/other-products')}
+            className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700"
+          >
+            Back to Other Products
+          </button>
       </div>
     );
   }
@@ -93,10 +99,33 @@ const MirrorDetails = () => {
       toast.success('Added to favorites!');
     }
   };
+  const handleBack = () => {
+    navigate(-1); // This will go back to the previous page
+  };
+
 
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
+      <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleBack}
+          className="mb-6 flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200"
+        >
+          <svg
+            className="w-5 h-5 mr-2"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back
+        </motion.button>
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="md:flex">
             {/* Product Image */}
