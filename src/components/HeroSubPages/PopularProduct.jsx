@@ -63,40 +63,6 @@ const PopularProduct = () => {
       category: 'T-Shirts',
       rating: 4.9,
       discount: 20
-    },
-    {
-      id: 5,
-      name: 'Heart Wall Mirror',
-      description: 'Decorative heart-shaped wall mirror for home decor',
-      price: 44.99,
-      oldPrice: 54.99,
-      image: mirrorHear,
-      category: "Designer Mirrors",
-      path: '/other-products/mirrors/2',
-      rating: 4.6,
-      discount: 18
-    },
-    {
-      id: 6,
-      name: 'Corporate Gift Pen',
-      description: 'Premium corporate pen set for professionals',
-      price: 15.99,
-      oldPrice: 19.99,
-      image: pen,
-      category: 'T-Shirts',
-      rating: 4.7,
-      discount: 20
-    },
-    {
-      id: 7,
-      name: 'Heart Fur Pillow',
-      description: 'Soft and cozy heart-shaped decorative pillow',
-      price: 29.99,
-      oldPrice: 39.99,
-      image: heartpillow,
-      category: 'Mugs',
-      rating: 4.8,
-      discount: 25
     }
   ];
 
@@ -104,6 +70,18 @@ const PopularProduct = () => {
     e.stopPropagation();
     addToCart(product);
     toast.success('Added to cart successfully!');
+  };
+
+  const handleProductClick = (product) => {
+    if (product.id === 1) {
+      navigate('/tshirts/7');
+    }else if (product.id === 2) {
+      navigate('/hoodies/1');
+    }else if (product.id === 3) {
+      navigate('/bottles/4');
+    }else if (product.id === 4) {
+      navigate('/kids/tshirt/1');
+    }
   };
 
   const filteredProducts = activeCategory === 'All' 
@@ -171,8 +149,16 @@ const PopularProduct = () => {
                   }
                 }}
                 className="cursor-pointer"
+                onClick={() => handleProductClick(product)}
               >
-                <ProductCard product={product} handleAddToCart={(e) => handleAddToCart(e, product)} />
+                <ProductCard 
+                  product={product} 
+                  handleAddToCart={(e) => handleAddToCart(e, product)} 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleProductClick(product);
+                  }}
+                />
               </motion.div>
             ))}
           </motion.div>

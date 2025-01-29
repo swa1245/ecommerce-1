@@ -87,9 +87,26 @@ const OtherProductsPage = () => {
       rating: 4.7,
       tags: ["cap", "sublimation", "headwear"],
       image: cap,
-      description: "High-quality sublimation printed cap with adjustable strap"
+      description: "High-quality sublimation printed cap with adjustable strap",
+      link: "/other-products/caps/1"
     }
   ];
+
+  const handleProductClick = (product) => {
+    if (product.link) {
+      navigate(product.link, {
+        state: { product: {
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          description: product.description,
+          image: product.image,
+          rating: product.rating,
+          category: product.category
+        }}
+      });
+    }
+  };
 
   const categories = [
     'all',
@@ -105,12 +122,6 @@ const OtherProductsPage = () => {
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
-  };
-
-  const handleProductClick = (product) => {
-    if (product.link) {
-      navigate(product.link);
-    }
   };
 
   const filteredProducts = products.filter(product => {
@@ -147,14 +158,14 @@ const OtherProductsPage = () => {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
+          {filteredProducts.map((product, index) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              onClick={() => handleProductClick(product)}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="cursor-pointer"
+              onClick={() => handleProductClick(product)}
             >
               <ProductCard product={product} />
             </motion.div>
