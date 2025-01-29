@@ -8,6 +8,7 @@ import mug4 from '../assests/mug4.jpg';
 import vaccumBootle from '../assests/vaccumBootle.jpg';
 import KeyChain from '../assests/Kitchen.jpg';
 import pillowDesign from '../assests/pillowdesign.jpg';
+import { useState } from 'react';
 
 const Categories = () => {
   const [hoveredCategory, setHoveredCategory] = useState(null);
