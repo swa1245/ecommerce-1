@@ -6,7 +6,7 @@ import kid1 from '../assests/kid1.jpg';
 import corporate from '../assests/corporate.jpg';
 import mug4 from '../assests/mug4.jpg';
 import vaccumBootle from '../assests/vaccumBootle.jpg';
-import KeyChain from '../assests/Kitchen.jpg';
+// import KeyChain from '../assests/Kitchen.jpg';
 import pillowDesign from '../assests/pillowdesign.jpg';
 import { useState } from 'react';
 
@@ -75,15 +75,6 @@ const Categories = () => {
       description: 'Visit Our Other Product Categories.',
       count: '60+ Items',
       path: '/fur-pillows',
-      accent: '#EFF6FF'
-    },
-    {
-      id: 8,
-      name: 'Other Products',
-      image: KeyChain,
-      description: 'Visit Our Other Product Categories.',
-      count: '50+ Items',
-      path: '/otherproducts',
       accent: '#EFF6FF'
     }
    
