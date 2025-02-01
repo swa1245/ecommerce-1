@@ -68,8 +68,8 @@ const Footer = () => {
           {/* Contact */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-blue-400">Contact Us</h3>
-            <p className="text-gray-300 mb-2">Email: copy@care.com</p>
-            <p className="text-gray-300">Phone: +1 (555) 123-4567</p>
+            <p className="text-gray-300 mb-2">Email: ccdigitals21@gmail.com</p>
+            <p className="text-gray-300">Phone: +91 98814 60549</p>
           </div>
 
           {/* Social */}

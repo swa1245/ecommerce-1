@@ -24,15 +24,21 @@ const Navbar = () => {
       name: 'T-Shirts', 
       path: '/tshirts',
       subitems: [
-        { 
-          name: 'Round Neck', 
-          path: '/tshirts/round-neck',
-          // description: 'Classic and comfortable round neck t-shirts'
+        {
+          name: 'Family T-Shirts', 
+          path: '/tshirts/family',
         },
-        { 
-          name: 'Collar', 
-          path: '/tshirts/collar',
-          // description: 'Elegant and stylish collar t-shirts'
+        {
+          name: 'Couple T-Shirts', 
+          path: '/tshirts/couple',
+        },
+        {
+          name: 'Group T-Shirts', 
+          path: '/tshirts/group',
+        },
+        {
+          name: 'Corporate T-Shirts', 
+          path: '/tshirts/corporate',
         }
       ]
     },
@@ -48,25 +54,34 @@ const Navbar = () => {
       name: 'Kids', 
       path: '/kids',
       subitems: [
+        { 
+          name: 'New Born Baby Sets', 
+          path: '/kids/newborn-sets',
+        },
         { name: 'Baby Romper', path: '/kids/romper' },
-        { name: 'T-Shirts', path: '/kids/tshirts' }
+        { name: 'T-Shirts', path: '/kids/tshirts' },
+        // {name:'Kids Romper polyster', path: '/kids/romper'},
       ]
     },
     { 
       name: 'Mugs',
       path: '/mugs',
       subitems: [
-        {
-          name: 'Plain Mugs',
+        { 
+          name: 'Ceramic Mugs', 
           path: '/mugs/plain',
         },
-        {
-          name: 'Magic Mugs',
+        { 
+          name: 'Magic Mugs', 
           path: '/mugs/magic',
         },
-        {
-          name: 'Three Tone Mugs',
+        { 
+          name: 'Three Tone Mugs', 
           path: '/mugs/three-tone',
+        },
+        { 
+          name: 'Transparent Mugs', 
+          path: '/mugs/transparent',
         }
       ]
     },
@@ -83,6 +98,10 @@ const Navbar = () => {
           name: 'Temperature Bottles',
           path: '/bottles?category=Temperature Bottle',
           // description: 'Insulated bottles for temperature control'
+        },
+        {
+          name:"Tempature Engraving Bottles",
+          path: '/bottles?category=Temperature Engraving',
         }
       ]
     },

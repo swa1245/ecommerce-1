@@ -78,18 +78,7 @@ const OtherProductsPage = () => {
       link: "/other-products/rakhis/2"
     }
     // Existing Keychain Products
-    ,
-    {
-      id: 13,
-      name: "Sublimation Cap",
-      category: "Caps",
-      price: 199,
-      rating: 4.7,
-      tags: ["cap", "sublimation", "headwear"],
-      image: cap,
-      description: "High-quality sublimation printed cap with adjustable strap",
-      link: "/other-products/caps/1"
-    }
+   
   ];
 
   const handleProductClick = (product) => {

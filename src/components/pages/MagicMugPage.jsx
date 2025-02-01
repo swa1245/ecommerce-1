@@ -4,7 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { useSearch } from '../../context/SearchContext';
 import ProductCard from '../ProductCard';
 import MugsBanner from '../banners/MugsBanner';
+
+// Import mug images
+import magicMugHeart from '../assests/MagicMugHeartHandle.jpg';
 import threeToneMug from '../assests/3ToneMug.jpg';
+import threeToneMug2 from '../assests/3 Tone Mug 2.jpg';
+import threeToneMug3 from '../assests/3 Tone Mug 3.jpg';
 
 const MagicMugPage = () => {
   const navigate = useNavigate();
@@ -12,13 +17,68 @@ const MagicMugPage = () => {
 
   const magicMugs = [
     {
-      id: 2,
+      id: 10,
+      name: "Magic Mug with Heart Handle",
+      category: "Magic Mugs",
+      price: 399,
+      rating: 4.9,
+      image: magicMugHeart,
+      description: "Color-changing mug with lovely heart handle",
+      features: [
+        "Heat-sensitive color changing",
+        "Unique heart-shaped handle",
+        "Premium ceramic material",
+        "Hand wash recommended",
+        "Perfect for gifting"
+      ]
+    },
+    {
+      id: 4,
       name: "3-Tone Magic Mug",
       category: "Magic Mugs",
       price: 349,
       rating: 4.8,
       image: threeToneMug,
-      description: "Color-changing mug with three-tone effect"
+      description: "Color-changing mug with three-tone effect",
+      features: [
+        "Heat-sensitive color changing",
+        "Three distinct color zones",
+        "Premium ceramic material",
+        "Hand wash recommended",
+        "Capacity: 11 oz"
+      ]
+    },
+    {
+      id: 5,
+      name: "3-Tone Magic Mug (Design 2)",
+      category: "Magic Mugs",
+      price: 349,
+      rating: 4.8,
+      image: threeToneMug2,
+      description: "Stunning three-tone magic mug with unique pattern",
+      features: [
+        "Heat-activated design",
+        "Triple color transformation",
+        "High-quality ceramic",
+        "Gentle hand wash only",
+        "Capacity: 11 oz"
+      ]
+    },
+    {
+      id: 6,
+      name: "3-Tone Magic Mug (Design 3)",
+      category: "Magic Mugs",
+      price: 349,
+      rating: 4.8,
+      image: threeToneMug3,
+      description: "Beautiful three-tone magic mug with special design",
+      features: [
+        "Temperature-sensitive coating",
+        "Tri-color pattern reveal",
+        "Durable ceramic build",
+        "Hand wash recommended",
+        "Capacity: 11 oz"
+      ]
     }
   ];
 
@@ -29,33 +89,34 @@ const MagicMugPage = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 py-12">
       <MugsBanner />
       
-      <div className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-3xl font-bold text-center mb-8 font-outfit"
-          >
-            Magic Mugs
-          </motion.h1>
+      <div className="container mx-auto px-4">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-3xl font-bold text-center mb-8 font-outfit"
+        >
+          Magic Mugs Collection
+        </motion.h1>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-            {filteredMugs.map((mug, index) => (
-              <motion.div
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {filteredMugs.map((mug, index) => (
+            <motion.div
+              key={mug.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="cursor-pointer transform transition-transform hover:scale-105"
+            >
+              <ProductCard
                 key={mug.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                product={mug}
                 onClick={() => navigate(`/mugs/${mug.id}`)}
-                className="cursor-pointer"
-              >
-                <ProductCard product={mug} />
-              </motion.div>
-            ))}
-          </div>
+              />
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>

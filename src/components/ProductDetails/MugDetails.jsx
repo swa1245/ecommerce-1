@@ -5,12 +5,19 @@ import { useCart } from '../../context/CartContext';
 import whiteMug from '../assests/whiteMug.jpg';
 import threeToneMug from '../assests/3ToneMug.jpg';
 import threeToneMug2 from '../assests/3ToneMug (2).jpg';
+import threeToneMug3 from '../assests/3 Tone Mug 3.jpg';
 import magicMugHeart from '../assests/MagicMugHeartHandle.jpg';
 import coupleMug from '../assests/coupleMug.jpg';
 import goldenMug from '../assests/GoldenMug.jpg';
 import silverMug from '../assests/SilverMug.jpg';
 import whiteHeartMug from '../assests/WhiteHeartHandleaMug.jpg';
 import printedMug from '../assests/printedmug.jpg';
+import teaMug11oz from '../assests/11 Oz Tea Mug.jpg';
+import teaMug11oz3 from '../assests/11 Oz Tea Mug3.jpg';
+import teaMug11oz4 from '../assests/11Oz Tea Mug4.jpg';
+import teaMug6oz from '../assests/6 Oz Tea Mug.jpg';
+import teaMug6oz2 from '../assests/6 Oz Tea Mug2.jpg';
+import teaMug6oz3 from '../assests/6 Oz Tea Mug3.jpg';
 
 const MugDetails = () => {
   const { id } = useParams();
@@ -21,24 +28,56 @@ const MugDetails = () => {
   const mugs = [
     {
       id: 1,
-      name: "Classic White Mug",
+      name: "11 Oz Tea Mug",
       category: "Plain Mugs",
-      price: 199,
+      price: 299,
       rating: 4.5,
-      image: whiteMug,
-      description: "Premium quality white ceramic mug for everyday use",
+      image: teaMug11oz,
+      description: "Premium 11 Oz ceramic tea mug for your daily brew",
       features: [
         "High-quality ceramic material",
         "Dishwasher and microwave safe",
         "Perfect for hot and cold beverages",
         "Durable and long-lasting",
-        "Capacity: 330ml"
+        "Capacity: 11 oz"
       ]
     },
     {
       id: 2,
+      name: "11 Oz Tea Mug (Design 2)",
+      category: "Plain Mugs",
+      price: 299,
+      rating: 4.5,
+      image: teaMug11oz3,
+      description: "Elegant 11 Oz ceramic tea mug with modern design",
+      features: [
+        "Modern aesthetic design",
+        "Premium ceramic build",
+        "Microwave safe",
+        "Easy-grip handle",
+        "Capacity: 11 oz"
+      ]
+    },
+    {
+      id: 3,
+      name: "11 Oz Tea Mug (Design 3)",
+      category: "Plain Mugs",
+      price: 299,
+      rating: 4.5,
+      image: teaMug11oz4,
+      description: "Stylish 11 Oz ceramic tea mug perfect for gifting",
+      features: [
+        "Gift-worthy design",
+        "Superior quality ceramic",
+        "Dishwasher safe",
+        "Comfortable grip",
+        "Capacity: 11 oz"
+      ]
+    },
+    {
+      id: 4,
       name: "3-Tone Magic Mug",
-      category: "Magic Mugs",
+      category: "Three Tone Mugs",
       price: 349,
       rating: 4.8,
       image: threeToneMug,
@@ -48,119 +87,199 @@ const MugDetails = () => {
         "Three distinct color zones",
         "Premium ceramic material",
         "Hand wash recommended",
-        "Capacity: 330ml"
-      ]
-    },
-    {
-      id: 3,
-      name: "Premium 3-Tone Mug",
-      category: "Magic Mugs",
-      price: 399,
-      rating: 4.7,
-      image: threeToneMug2,
-      description: "Premium color-changing mug with metallic finish",
-      features: [
-        "Metallic finish coating",
-        "Heat-activated color change",
-        "Premium quality print",
-        "Hand wash only",
-        "Capacity: 330ml"
-      ]
-    },
-    {
-      id: 4,
-      name: "Heart Handle Magic Mug",
-      category: "Magic Mugs",
-      price: 449,
-      rating: 4.9,
-      image: magicMugHeart,
-      description: "Color-changing mug with heart-shaped handle",
-      features: [
-        "Unique heart-shaped handle",
-        "Heat-sensitive coating",
-        "Premium ceramic build",
-        "Perfect for gifting",
-        "Capacity: 330ml"
+        "Capacity: 11 oz"
       ]
     },
     {
       id: 5,
-      name: "Couple Photo Mug Set",
-      category: "Special Mugs",
-      price: 599,
-      rating: 5.0,
-      image: coupleMug,
-      description: "Perfect gift for couples with custom photo printing",
+      name: "3-Tone Magic Mug (Design 2)",
+      category: "Three Tone Mugs",
+      price: 349,
+      rating: 4.8,
+      image: threeToneMug2,
+      description: "Stunning three-tone magic mug with unique pattern",
       features: [
-        "Set of 2 matching mugs",
-        "High-quality photo printing",
-        "Dishwasher safe",
-        "Customizable design",
-        "Capacity: 330ml each"
+        "Heat-activated design",
+        "Triple color transformation",
+        "High-quality ceramic",
+        "Gentle hand wash only",
+        "Capacity: 11 oz"
       ]
     },
     {
       id: 6,
-      name: "Golden Premium Mug",
-      category: "Premium Mugs",
-      price: 499,
+      name: "3-Tone Magic Mug (Design 3)",
+      category: "Three Tone Mugs",
+      price: 349,
       rating: 4.8,
-      image: goldenMug,
-      description: "Luxury golden finish ceramic mug",
+      image: threeToneMug3,
+      description: "Beautiful three-tone magic mug with special design",
       features: [
-        "Premium golden coating",
-        "Elegant design",
+        "Temperature-sensitive coating",
+        "Tri-color pattern reveal",
+        "Durable ceramic build",
         "Hand wash recommended",
-        "Perfect for special occasions",
-        "Capacity: 330ml"
+        "Capacity: 11 oz"
       ]
     },
     {
       id: 7,
-      name: "Silver Premium Mug",
-      category: "Premium Mugs",
-      price: 499,
-      rating: 4.8,
-      image: silverMug,
-      description: "Elegant silver finish ceramic mug",
+      name: "6 Oz Tea Mug",
+      category: "Plain Mugs",
+      price: 249,
+      rating: 4.6,
+      image: teaMug6oz,
+      description: "Compact 6 Oz ceramic mug for tea and coffee",
       features: [
-        "Premium silver coating",
-        "Sleek design",
-        "Hand wash recommended",
-        "Ideal for gifting",
-        "Capacity: 330ml"
+        "Compact size",
+        "Perfect for small servings",
+        "Premium ceramic",
+        "Easy to handle",
+        "Capacity: 6 oz"
       ]
     },
     {
       id: 8,
-      name: "White Heart Handle Mug",
-      category: "Special Mugs",
-      price: 299,
+      name: "6 Oz Tea Mug (Design 2)",
+      category: "Plain Mugs",
+      price: 249,
       rating: 4.6,
-      image: whiteHeartMug,
-      description: "Classic white mug with heart-shaped handle",
+      image: teaMug6oz2,
+      description: "Elegant 6 Oz ceramic mug with unique pattern",
       features: [
-        "Unique heart handle design",
-        "Premium ceramic material",
-        "Dishwasher safe",
-        "Perfect for Valentine's",
-        "Capacity: 330ml"
+        "Unique pattern design",
+        "Space-saving size",
+        "Quality ceramic build",
+        "Perfect for espresso",
+        "Capacity: 6 oz"
       ]
     },
     {
       id: 9,
-      name: "Custom Printed Mug",
-      category: "Personalized Mugs",
+      name: "6 Oz Tea Mug (Design 3)",
+      category: "Plain Mugs",
+      price: 249,
+      rating: 4.6,
+      image: teaMug6oz3,
+      description: "Stylish 6 Oz ceramic mug with modern design",
+      features: [
+        "Modern styling",
+        "Ideal for small servings",
+        "Durable construction",
+        "Easy to clean",
+        "Capacity: 6 oz"
+      ]
+    },
+    {
+      id: 10,
+      name: "Magic Mug with Heart Handle",
+      category: "Magic Mugs",
+      price: 399,
+      rating: 4.9,
+      image: magicMugHeart,
+      description: "Color-changing mug with lovely heart handle",
+      features: [
+        "Heat-sensitive color changing",
+        "Unique heart-shaped handle",
+        "Premium ceramic material",
+        "Hand wash recommended",
+        "Perfect for gifting"
+      ]
+    },
+    {
+      id: 11,
+      name: "Golden Premium Mug",
+      category: "Transparent Mugs",
+      price: 449,
+      rating: 4.9,
+      image: goldenMug,
+      description: "Luxurious golden-finished ceramic mug",
+      features: [
+        "Premium golden finish",
+        "Transparent glass design",
+        "Heat-resistant material",
+        "Elegant appearance",
+        "Perfect for special occasions"
+      ]
+    },
+    {
+      id: 12,
+      name: "Silver Premium Mug",
+      category: "Transparent Mugs",
+      price: 449,
+      rating: 4.9,
+      image: silverMug,
+      description: "Elegant silver-finished ceramic mug",
+      features: [
+        "Premium silver finish",
+        "Crystal clear transparency",
+        "Temperature resistant",
+        "Modern design",
+        "Ideal for gifting"
+      ]
+    },
+    {
+      id: 13,
+      name: "White Heart Handle Mug",
+      category: "Plain Mugs",
       price: 349,
       rating: 4.7,
-      image: printedMug,
-      description: "Personalized mug with your custom design or photo",
+      image: whiteHeartMug,
+      description: "White ceramic mug with decorative heart handle",
       features: [
-        "High-quality image printing",
+        "Unique heart handle",
+        "Premium white ceramic",
+        "Perfect for gifting",
+        "Elegant design",
+        "Capacity: 11 oz"
+      ]
+    },
+    {
+      id: 14,
+      name: "Couple Mug Set",
+      category: "Plain Mugs",
+      price: 599,
+      rating: 5.0,
+      image: coupleMug,
+      description: "Perfect pair of mugs for couples",
+      features: [
+        "Set of 2 matching mugs",
+        "High-quality ceramic",
+        "Romantic design",
+        "Gift-ready packaging",
+        "Capacity: 11 oz each"
+      ]
+    },
+    {
+      id: 15,
+      name: "Custom Printed Mug",
+      category: "Plain Mugs",
+      price: 399,
+      rating: 4.8,
+      image: printedMug,
+      description: "Personalized mug with custom printing",
+      features: [
         "Customizable design",
-        "Dishwasher safe coating",
-        "Fast printing service",
-        "Capacity: 330ml"
+        "High-quality printing",
+        "Dishwasher safe",
+        "Premium ceramic",
+        "Capacity: 11 oz"
+      ]
+    },
+    {
+      id: 16,
+      name: "Classic White Mug",
+      category: "Plain Mugs",
+      price: 249,
+      rating: 4.5,
+      image: whiteMug,
+      description: "Classic white ceramic mug for everyday use",
+      features: [
+        "Timeless design",
+        "Durable ceramic",
+        "Microwave safe",
+        "Easy to clean",
+        "Capacity: 11 oz"
       ]
     }
   ];
@@ -191,7 +310,7 @@ const MugDetails = () => {
   };
 
   const handleBack = () => {
-    navigate(-1); // This will go back to the previous page
+    navigate(-1);
   };
 
   return (

@@ -1,531 +1,491 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useCart } from '../../context/CartContext';
-import { toast } from 'react-hot-toast';
 import { motion } from 'framer-motion';
-import t1 from '../assests/1.png';
-import t2 from '../assests/2.png';
-import t3 from '../assests/3.jpg';
-import t4 from '../assests/4.jpg';
-import t5 from '../assests/5.jpg';
-import t6 from '../assests/6.jpg';
-import polo1 from '../assests/polo1.jpg';
-import polo2 from '../assests/polo2.jpg';
-import polo3 from '../assests/polo3.jpg';
-import polo4 from '../assests/polo4.jpg';
-import polo5 from '../assests/polo5.jpg';
-import kid1 from '../assests/kid1.jpg';
-import kid2 from '../assests/kid2.jpg';
-import kid3 from '../assests/kid3.jpg';
-import kid4 from '../assests/kid4.jpg';
-import kid5 from '../assests/kid5.jpg';
+import { useCart } from '../../context/CartContext';
+import { useFavorites } from '../../context/FavoritesContext';
+import { toast } from 'react-hot-toast';
+import ScrollTop from '../ScrollTop';
+
+// Import all T-shirt images
+import familyTshirt1 from '../assests/tshirtbabay.jpg';
+import familyTshirt2 from '../assests/tshirtbabay2.jpg';
+import familyTshirt3 from '../assests/tshirtbabay3.jpg';
+import familyTshirt4 from '../assests/tshirtbaby4.jpg';
+
+import coupleTshirt1 from '../assests/couple tshirt 1.jpg';
+import coupleTshirt2 from '../assests/couple tshirt 2.jpg';
+import coupleTshirt3 from '../assests/couple tshirt 3.jpg';
+import coupleTshirt4 from '../assests/couple tshirt 4.jpg';
+
+import groupTshirt1 from '../assests/group tshirts 1.jpg';
+import groupTshirt2 from '../assests/group tshirts 2.jpg';
+import groupTshirt3 from '../assests/group tshirts 3.jpg';
+import groupTshirt4 from '../assests/group tshirts 4.jpg';
+import groupTshirt5 from '../assests/group tshirts 5.jpg';
+import groupTshirt6 from '../assests/group tshirts 6.jpg';
+
+import corporateTshirt5 from '../assests/corporateTshirt1.jpg';
+import corporateTshirt6 from '../assests/corporatetshirts2.jpg';
+import corporateTshirt7 from '../assests/corporatetshirts3.jpg';
+import corporateTshirt8 from '../assests/corporatetshirts5.jpg';
+import corporateTshirt9 from '../assests/corporatetshirts6.jpg';
+
+import img5 from '../assests/family tshirt 1.jpg'
+import img6 from '../assests/family tshirt 2.jpg'
 
 const TshirtDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
-  const [selectedSize, setSelectedSize] = useState('M');
-  const [quantity, setQuantity] = useState(1);
+  const { addToFavorites, removeFromFavorites, favorites } = useFavorites();
 
-  const tshirts = [
+  const allTshirts = [
+    // Family T-shirts
     {
-      id: "1",
-      name: "Classic Cotton T-Shirt",
-      category: "Round Neck T-shirt",
-      price: 24.99,
+      id: 1,
+      name: "Classic Family T-Shirt Set",
+      category: "Family T-Shirts",
+      price: 1499,
+      rating: 4.8,
+      image: familyTshirt1,
+      description: "Matching family t-shirt set with custom prints",
+      features: [
+        "100% cotton material",
+        "Custom family prints",
+        "Available in all sizes",
+        "Comfortable fit",
+        "Machine washable"
+      ]
+    },
+    {
+      id: 2,
+      name: "Family Vacation T-Shirt Set",
+      category: "Family T-Shirts",
+      price: 1599,
+      rating: 4.9,
+      image: familyTshirt2,
+      description: "Perfect matching set for family vacations",
+      features: [
+        "Premium cotton blend",
+        "Vacation-themed designs",
+        "Multiple color options",
+        "Breathable fabric",
+        "Easy care instructions"
+      ]
+    },
+    {
+      id: 3,
+      name: "Family Celebration T-Shirt Set",
+      category: "Family T-Shirts",
+      price: 1699,
+      rating: 4.7,
+      image: familyTshirt3,
+      description: "Special occasion family matching t-shirts",
+      features: [
+        "High-quality printing",
+        "Celebration themes",
+        "Customizable text",
+        "Soft cotton fabric",
+        "Durable print quality"
+      ]
+    },
+    {
+      id: 4,
+      name: "Premium Family T-Shirt Collection",
+      category: "Family T-Shirts",
+      price: 1799,
+      rating: 4.9,
+      image: familyTshirt4,
+      description: "Luxury family matching t-shirt collection",
+      features: [
+        "Premium cotton material",
+        "Designer prints",
+        "Perfect fit guarantee",
+        "Multiple design options",
+        "Gift packaging available"
+      ]
+    },
+    // Couple T-shirts
+    {
+      id: 5,
+      name: "Classic Couple T-Shirt Set",
+      category: "Couple T-Shirts",
+      price: 999,
+      rating: 4.9,
+      image: coupleTshirt1,
+      description: "Perfect matching set for couples",
+      features: [
+        "100% cotton material",
+        "Matching designs",
+        "Comfortable fit",
+        "Multiple sizes available",
+        "High-quality printing"
+      ]
+    },
+    {
+      id: 6,
+      name: "Love Theme Couple T-Shirts",
+      category: "Couple T-Shirts",
+      price: 1099,
+      rating: 4.8,
+      image: coupleTshirt2,
+      description: "Romantic themed matching t-shirts for couples",
+      features: [
+        "Premium cotton blend",
+        "Love-themed designs",
+        "Perfect for dates",
+        "Soft fabric feel",
+        "Durable print quality"
+      ]
+    },
+    {
+      id: 7,
+      name: "Anniversary Special T-Shirts",
+      category: "Couple T-Shirts",
+      price: 1199,
+      rating: 4.9,
+      image: coupleTshirt3,
+      description: "Special edition anniversary couple t-shirts",
+      features: [
+        "Customizable text",
+        "Anniversary designs",
+        "Gift packaging",
+        "Premium material",
+        "Perfect fit guarantee"
+      ]
+    },
+    {
+      id: 8,
+      name: "Designer Couple Collection",
+      category: "Couple T-Shirts",
+      price: 1299,
+      rating: 4.7,
+      image: coupleTshirt4,
+      description: "Designer collection for stylish couples",
+      features: [
+        "Designer prints",
+        "Premium cotton",
+        "Modern designs",
+        "Trendy patterns",
+        "Comfortable wear"
+      ]
+    },
+    // Group T-shirts
+    {
+      id: 9,
+      name: "Team Event T-Shirts",
+      category: "Group T-Shirts",
+      price: 599,
+      rating: 4.7,
+      image: groupTshirt1,
+      description: "Perfect for team events and gatherings",
+      features: [
+        "Bulk ordering available",
+        "Team customization",
+        "Quick delivery",
+        "Multiple colors",
+        "Size variety"
+      ]
+    },
+    {
+      id: 10,
+      name: "College Group T-Shirts",
+      category: "Group T-Shirts",
+      price: 549,
+      rating: 4.8,
+      image: groupTshirt2,
+      description: "Ideal for college groups and clubs",
+      features: [
+        "College logo printing",
+        "Department customization",
+        "Affordable pricing",
+        "Bulk discounts",
+        "Quality material"
+      ]
+    },
+    {
+      id: 11,
+      name: "Sports Team T-Shirts",
+      category: "Group T-Shirts",
+      price: 649,
+      rating: 4.9,
+      image: groupTshirt3,
+      description: "Professional sports team t-shirts",
+      features: [
+        "Athletic fabric",
+        "Team name printing",
+        "Number customization",
+        "Moisture-wicking",
+        "Durable quality"
+      ]
+    },
+    {
+      id: 12,
+      name: "Event Staff T-Shirts",
+      category: "Group T-Shirts",
+      price: 499,
+      rating: 4.6,
+      image: groupTshirt4,
+      description: "Distinctive t-shirts for event staff",
+      features: [
+        "High visibility colors",
+        "Role identification",
+        "Easy maintenance",
+        "Comfortable fit",
+        "Bulk ordering"
+      ]
+    },
+    // Corporate T-shirts
+    {
+      id: 13,
+      name: "Professional Polo T-Shirt",
+      category: "Corporate T-Shirts",
+      price: 899,
+      rating: 4.8,
+      image: corporateTshirt5,
+      description: "Premium polo t-shirts for corporate wear",
+      features: [
+        "Professional design",
+        "Company logo printing",
+        "Premium cotton",
+        "Collar styling",
+        "Business casual fit"
+      ]
+    },
+    {
+      id: 14,
+      name: "Corporate Event T-Shirts",
+      category: "Corporate T-Shirts",
+      price: 799,
+      rating: 4.7,
+      image: corporateTshirt6,
+      description: "Perfect for corporate events and team building",
+      features: [
+        "Bulk ordering",
+        "Event customization",
+        "Quick delivery",
+        "Multiple colors",
+        "Size customization"
+      ]
+    },
+    {
+      id:31,
+      name: "Collar T-Shirt",
+      category: "Corporate T-Shirts",
+      price: 599,
       rating: 4.5,
-      image: t1,
-      description: "Premium cotton t-shirt with a comfortable fit",
-      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+      image: corporateTshirt9,
+      description: "T-shirts with a stylish collar",
       features: [
-        '100% Premium Cotton',
-        'Breathable fabric',
-        'Regular fit',
-        'Crew neck',
-        'Pre-shrunk material'
+        "Collar styling",
+        "Premium fabric",
+        "Size flexibility",
+        "Easy wash",
+        "Comfortable fit"
       ]
     },
     {
-      id: "2",
-      name: "Sport Performance Tee",
-      category: "Sport T-shirt",
-      price: 29.99,
-      rating: 4.8,
-      image: t2,
-      description: "Moisture-wicking sport t-shirt for active lifestyle",
-      sizes: ['S', 'M', 'L', 'XL'],
-      features: [
-        'Moisture-wicking fabric',
-        'Quick-dry technology',
-        'Athletic fit',
-        'Reflective details',
-        'Anti-odor treatment'
-      ]
-    },
-    {
-      id: "3",
-      name: "Urban Street T-Shirt",
-      category: "Graphic T-shirt",
-      price: 27.99,
-      rating: 4.6,
-      image: t3,
-      description: "Trendy graphic t-shirt with urban design",
-      sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-      features: [
-        'Premium graphic print',
-        'Soft cotton blend',
-        'Modern fit',
-        'Ribbed crew neck',
-        'Double-stitched seams'
-      ]
-    },
-    {
-      id: "4",
-      name: "Premium Cotton Round Neck",
-      category: "Round Neck T-shirt",
-      price: 32.99,
-      rating: 4.7,
-      image: t4,
-      description: "High-quality cotton t-shirt for everyday comfort",
-      sizes: ['XS', 'S', 'M', 'L', 'XL'],
-      features: [
-        'Premium combed cotton',
-        'Comfort fit',
-        'Reinforced shoulder seams',
-        'Tag-free neck label',
-        'Pre-washed fabric'
-      ]
-    },
-    {
-      id: "5",
-      name: "Designer Collection Tee",
-      category: "Designer T-shirt",
-      price: 34.99,
+      id: 15,
+      name: "Executive Collection",
+      category: "Corporate T-Shirts",
+      price: 999,
       rating: 4.9,
-      image: t5,
-      description: "Exclusive designer t-shirt with unique patterns",
-      sizes: ['S', 'M', 'L', 'XL'],
+      image: corporateTshirt7,
+      description: "Premium collection for executives",
       features: [
-        'Limited edition design',
-        'Premium cotton blend',
-        'Slim fit',
-        'Signature details',
-        'Custom neck label'
+        "Premium fabric",
+        "Executive styling",
+        "Custom embroidery",
+        "Professional look",
+        "Comfort fit"
       ]
     },
     {
-      id: "6",
-      name: "Casual Comfort T-Shirt",
-      category: "Casual T-shirt",
-      price: 26.99,
+      id: 16,
+      name: "Company Uniform T-Shirts",
+      category: "Corporate T-Shirts",
+      price: 699,
       rating: 4.6,
-      image: t6,
-      description: "Comfortable casual t-shirt for daily wear",
-      sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+      image: corporateTshirt8,
+      description: "Standard company uniform t-shirts",
       features: [
-        'Soft cotton fabric',
-        'Relaxed fit',
-        'Durable construction',
-        'Classic crew neck',
-        'Easy care instructions'
+        "Durable material",
+        "Company branding",
+        "Bulk discounts",
+        "Easy maintenance",
+        "Professional design"
       ]
-    },
-    {
-      id: "7",
-      name: "Classic Polo T-Shirt",
-      category: "Collar T-shirt",
-      price: 39.99,
-      rating: 4.8,
-      image: polo1,
-      description: "Premium cotton polo t-shirt with perfect fit",
-      sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-      features: [
-        'Premium pique cotton',
-        'Classic polo collar',
-        'Three-button placket',
-        'Ribbed sleeve cuffs',
-        'Side vents for comfort'
-      ]
-    },
-    {
-      id: "8",
-      name: "Business Casual Polo",
-      category: "Collar T-shirt",
-      price: 44.99,
-      rating: 4.7,
-      image: polo2,
-      description: "Elegant polo t-shirt for business casual settings",
-      sizes: ['S', 'M', 'L', 'XL'],
-      features: [
-        'Wrinkle-resistant fabric',
-        'Professional cut',
-        'Reinforced buttons',
-        'No-curl collar',
-        'Extended back hem'
-      ]
-    },
-    {
-      id: "9",
-      name: "Sport Performance Polo",
-      category: "Collar T-shirt",
-      price: 49.99,
+    },{
+      id: 17,
+      name: "Family Vacation T-Shirt Set",
+      category: "Family T-Shirts",
+      price: 1599,
       rating: 4.9,
-      image: polo3,
-      description: "Athletic polo t-shirt with moisture-wicking fabric",
-      sizes: ['S', 'M', 'L', 'XL'],
+      image: img5,
+      description: "Perfect matching set for family vacations",
       features: [
-        'Performance fabric blend',
-        'UV protection',
-        'Moisture-wicking',
-        'Stretch construction',
-        'Anti-odor technology'
+        "Premium cotton blend",
+        "Vacation-themed designs",
+        "Multiple color options",
+        "Breathable fabric",
+        "Easy care instructions"
       ]
-    },
-    {
-      id: "10",
-      name: "Premium Cotton Polo",
-      category: "Collar T-shirt",
-      price: 42.99,
-      rating: 4.6,
-      image: polo4,
-      description: "High-quality cotton polo for superior comfort",
-      sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-      features: [
-        'Long-staple cotton',
-        'Classic fit',
-        'Durable construction',
-        'Signature buttons',
-        'Reinforced shoulder seams'
-      ]
-    },
-    {
-      id: "11",
-      name: "Designer Polo Collection",
-      category: "Collar T-shirt",
-      price: 54.99,
+    },{
+      id: 18,
+      name: "Family Event T-Shirt Set",
+      category: "Family T-Shirts",
+      price: 1499,
       rating: 4.8,
-      image: polo5,
-      description: "Exclusive designer polo t-shirt with premium finish",
-      sizes: ['S', 'M', 'L', 'XL'],
+      image: groupTshirt5,
+      description: "Matching family t-shirt set with custom prints",
       features: [
-        'Designer fabric blend',
-        'Modern slim fit',
-        'Premium hardware',
-        'Contrast details',
-        'Luxury finishing'
+        "100% cotton material",
+        "Custom family prints",
+        "Available in all sizes",
+        "Comfortable fit",
+        "Machine washable"
       ]
-    },
-    {
-      id: "12",
-      name: "Kids Casual Fun T-Shirt",
-      category: "Kids T-shirt",
-      price: 19.99,
-      rating: 4.8,
-      image: kid1,
-      description: "Comfortable and playful t-shirt for active kids",
-      sizes: ['4-5Y', '6-7Y', '8-9Y', '10-11Y', '12-13Y'],
-      features: [
-        'Soft cotton blend',
-        'Kid-friendly designs',
-        'Easy to wash',
-        'Durable stitching',
-        'Comfortable fit'
-      ]
-    },
-    {
-      id: "13",
-      name: "Kids Graphic Print Tee",
-      category: "Kids T-shirt",
-      price: 22.99,
-      rating: 4.7,
-      image: kid2,
-      description: "Colorful graphic t-shirt with fun designs",
-      sizes: ['4-5Y', '6-7Y', '8-9Y', '10-11Y', '12-13Y'],
-      features: [
-        'Vibrant graphics',
-        'Premium cotton',
-        'Color-fast fabric',
-        'Reinforced seams',
-        'Pre-shrunk material'
-      ]
-    },
-    {
-      id: "14",
-      name: "Kids Sport T-Shirt",
-      category: "Kids T-shirt",
-      price: 24.99,
+    },{
+      id:21,
+      name: "Family Vacation T-Shirt Set",
+      category: "Family T-Shirts",
+      price: 1599,
       rating: 4.9,
-      image: kid3,
-      description: "Breathable sport t-shirt for active children",
-      sizes: ['4-5Y', '6-7Y', '8-9Y', '10-11Y', '12-13Y'],
+      image: groupTshirt6,
+      description: "Perfect matching set for family vacations",
       features: [
-        'Moisture-wicking fabric',
-        'Breathable mesh panels',
-        'Quick-dry technology',
-        'UV protection',
-        'Odor-resistant'
+        "Premium cotton blend",
+        "Vacation-themed designs",
+        "Multiple color options",
+        "Breathable fabric",
+        "Easy care instructions"
       ]
-    },
-    {
-      id: "15",
-      name: "Kids Premium Cotton Tee",
-      category: "Kids T-shirt",
-      price: 21.99,
-      rating: 4.6,
-      image: kid4,
-      description: "Soft cotton t-shirt for everyday comfort",
-      sizes: ['4-5Y', '6-7Y', '8-9Y', '10-11Y', '12-13Y'],
-      features: [
-        'Premium cotton',
-        'Tag-free neck label',
-        'Double-stitched hem',
-        'Easy care fabric',
-        'Long-lasting quality'
-      ]
-    },
-    {
-      id: "16",
-      name: "Kids Designer Collection",
-      category: "Kids T-shirt",
-      price: 26.99,
+    },{
+      id:22,
+      name: "Family Event T-Shirt Set",
+      category: "Family T-Shirts",
+      price: 1499,
       rating: 4.8,
-      image: kid5,
-      description: "Trendy designer t-shirt for stylish kids",
-      sizes: ['4-5Y', '6-7Y', '8-9Y', '10-11Y', '12-13Y'],
+      image: groupTshirt5,
+      description: "Matching family t-shirt set with custom prints",
       features: [
-        'Designer patterns',
-        'Premium fabric blend',
-        'Stylish details',
-        'Comfortable fit',
-        'Fashion-forward design'
+        "100% cotton material",
+        "Custom family prints",
+        "Available in all sizes",
+        "Comfortable fit",
+        "Machine washable"
       ]
     }
   ];
 
-  const selectedTshirt = tshirts.find(t => t.id === id);
+  const tshirt = allTshirts.find(t => t.id === parseInt(id));
 
-  useEffect(() => {
-    if (!selectedTshirt) {
-      navigate('/tshirts');
-    }
-  }, [selectedTshirt, navigate]);
-
-  if (!selectedTshirt) {
-    return null;
+  if (!tshirt) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <h1 className="text-2xl font-semibold">T-shirt not found</h1>
+      </div>
+    );
   }
 
+  const isFavorite = favorites.some(item => item.id === tshirt.id);
+
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      removeFromFavorites(tshirt.id);
+      toast.success('Removed from favorites!');
+    } else {
+      addToFavorites(tshirt);
+      toast.success('Added to favorites!');
+    }
+  };
+
   const handleAddToCart = () => {
-    addToCart({
-      ...selectedTshirt,
-      quantity,
-      size: selectedSize,
-      totalPrice: selectedTshirt.price * quantity
-    });
+    addToCart(tshirt);
     toast.success('Added to cart successfully!');
   };
 
-  const handleBack = () => {
-    navigate(-1); // This will go back to the previous page
-  };
-
   return (
-    <motion.div 
-      initial={{ opacity: 0 }} 
-      animate={{ opacity: 1 }} 
-      exit={{ opacity: 0 }}
-      className="min-h-screen bg-gray-100 py-8"
-    >
-      <div className="max-w-6xl mx-auto px-4">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleBack}
-          className="mb-6 flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200"
-        >
-          <svg
-            className="w-5 h-5 mr-2"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+    <div className="min-h-screen bg-gray-50 py-12">
+      <ScrollTop />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* Image Section */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="md:w-1/2"
           >
-            <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          Back
-        </motion.button>
-        <motion.div 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="bg-white rounded-lg shadow-lg overflow-hidden"
-        >
-          <div className="flex flex-col md:flex-row">
-            <motion.div 
-              className="w-full md:w-1/2 flex items-center justify-center p-8 bg-gray-50"
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <motion.div className="relative w-full max-w-md aspect-square">
-                <motion.img
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  className="w-full h-full object-contain rounded-lg shadow-md"
-                  src={selectedTshirt.image}
-                  alt={selectedTshirt.name}
-                />
-              </motion.div>
-            </motion.div>
-            <motion.div 
-              className="w-full md:w-1/2 p-8"
-              initial={{ x: 50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <motion.div 
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="uppercase tracking-wide text-sm text-indigo-500 font-semibold"
-              >
-                {selectedTshirt.category}
-              </motion.div>
-              <motion.h2 
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="mt-2 text-2xl font-bold text-gray-900"
-              >
-                {selectedTshirt.name}
-              </motion.h2>
-              <motion.div 
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="mt-2 flex items-center"
-              >
-                <span className="text-yellow-400">★</span>
-                <span className="ml-1 text-gray-600">{selectedTshirt.rating}</span>
-              </motion.div>
-              <motion.p 
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="mt-4 text-gray-600"
-              >
-                {selectedTshirt.description}
-              </motion.p>
-              
-              <motion.div 
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className="mt-6"
-              >
-                <h3 className="text-lg font-semibold text-gray-900">Features:</h3>
-                <ul className="mt-2 list-disc list-inside space-y-2">
-                  {selectedTshirt.features.map((feature, index) => (
-                    <motion.li 
-                      key={index} 
-                      initial={{ x: -20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-                      className="text-gray-600"
-                    >
-                      {feature}
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
+            <img
+              src={tshirt.image}
+              alt={tshirt.name}
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
+          </motion.div>
 
-              <motion.div 
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-                className="mt-6"
-              >
-                <h3 className="text-lg font-semibold text-gray-900">Select Size:</h3>
-                <div className="mt-2 flex gap-2">
-                  {selectedTshirt.sizes.map((size, index) => (
-                    <motion.button
-                      key={size}
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3, delay: 1 + index * 0.1 }}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => setSelectedSize(size)}
-                      className={`px-4 py-2 text-sm font-medium rounded-md ${
-                        selectedSize === size
-                          ? 'bg-indigo-600 text-white'
-                          : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+          {/* Details Section */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="md:w-1/2"
+          >
+            <h1 className="text-3xl font-bold mb-4">{tshirt.name}</h1>
+            <p className="text-gray-600 mb-4">{tshirt.description}</p>
+            
+            <div className="mb-6">
+              <span className="text-2xl font-semibold">₹{tshirt.price}</span>
+              <div className="flex items-center mt-2">
+                <div className="flex items-center">
+                  {[...Array(5)].map((_, index) => (
+                    <svg
+                      key={index}
+                      className={`w-5 h-5 ${
+                        index < Math.floor(tshirt.rating)
+                          ? 'text-yellow-400'
+                          : 'text-gray-300'
                       }`}
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                     >
-                      {size}
-                    </motion.button>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
                   ))}
+                  <span className="ml-2 text-gray-600">({tshirt.rating})</span>
                 </div>
-              </motion.div>
+              </div>
+            </div>
 
-              <motion.div 
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1.1 }}
-                className="mt-6"
-              >
-                <h3 className="text-lg font-semibold text-gray-900">Quantity:</h3>
-                <div className="mt-2 flex items-center gap-2">
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="px-3 py-1 bg-gray-200 rounded-md hover:bg-gray-300"
-                  >
-                    -
-                  </motion.button>
-                  <span className="px-4 py-1">{quantity}</span>
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setQuantity(quantity + 1)}
-                    className="px-3 py-1 bg-gray-200 rounded-md hover:bg-gray-300"
-                  >
-                    +
-                  </motion.button>
-                </div>
-              </motion.div>
+            <div className="mb-6">
+              <h2 className="text-xl font-semibold mb-2">Features:</h2>
+              <ul className="list-disc list-inside space-y-2">
+                {tshirt.features.map((feature, index) => (
+                  <li key={index} className="text-gray-600">{feature}</li>
+                ))}
+              </ul>
+            </div>
 
-              <motion.div 
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1.2 }}
-                className="mt-8 flex items-center justify-between"
+            <div className="flex gap-4">
+              <button
+                onClick={handleAddToCart}
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
-                <motion.span 
-                  className="text-2xl font-bold text-gray-900"
-                  key={quantity} // This will trigger animation when price changes
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  ${(selectedTshirt.price * quantity).toFixed(2)}
-                </motion.span>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={handleAddToCart}
-                  className="px-6 py-3 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                >
-                  Add to Cart
-                </motion.button>
-              </motion.div>
-            </motion.div>
-          </div>
-        </motion.div>
+                Add to Cart
+              </button>
+              <button
+                onClick={handleFavoriteClick}
+                className={`px-6 py-2 rounded-lg border transition-colors ${
+                  isFavorite
+                    ? 'bg-red-600 text-white border-red-600'
+                    : 'border-gray-300 hover:border-red-600 hover:text-red-600'
+                }`}
+              >
+                {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+              </button>
+            </div>
+          </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

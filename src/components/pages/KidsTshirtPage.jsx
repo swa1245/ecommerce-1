@@ -1,135 +1,232 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useSearch } from '../../context/SearchContext';
 import ProductCard from '../ProductCard';
 import KidsBanner from '../banners/KidsBanner';
+
+// Import kids images
 import kid1 from '../assests/kid1.jpg';
 import kid2 from '../assests/kid2.jpg';
 import kid3 from '../assests/kid3.jpg';
+import kid4 from '../assests/kid4.jpg';
+import kid5 from '../assests/kid5.jpg';
+import kid6 from '../assests/kid 6.jpg';
+import kid7 from '../assests/kid 7.jpg';
+import kid8 from '../assests/kid 8.jpg';
+import kid9 from '../assests/kid 9.jpg';
 
 const KidsTshirtPage = () => {
   const navigate = useNavigate();
   const { searchTerm } = useSearch();
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
-  const tshirtProducts = [
+  const products = [
     {
-      id: "1",
-      name: "Kids Casual Fun T-Shirt",
-      category: "All T-shirts",
-      price: 19.99,
-      rating: 4.8,
+      id: 1,
+      name: "Kids Cotton T-Shirt",
+      category: "T-Shirts",
+      price: 499,
+      rating: 4.5,
       image: kid1,
-      description: "Comfortable and playful t-shirt for active kids",
-      sizes: ['4-5Y', '6-7Y', '8-9Y', '10-11Y', '12-13Y'],
+      description: "Comfortable cotton t-shirt for kids",
+      sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
       features: [
-        'Soft cotton blend',
-        'Kid-friendly designs',
-        'Easy to wash',
-        'Durable stitching',
-        'Comfortable fit'
+        "100% cotton",
+        "Breathable fabric",
+        "Easy to wash",
+        "Durable quality"
       ]
     },
     {
-      id: "2",
-      name: "Kids Graphic Print Tee",
-      category: "All T-shirts",
-      price: 22.99,
+      id: 2,
+      name: "Kids Printed T-Shirt",
+      category: "T-Shirts",
+      price: 599,
       rating: 4.7,
       image: kid2,
-      description: "Colorful graphic t-shirt with fun designs",
-      sizes: ['4-5Y', '6-7Y', '8-9Y', '10-11Y', '12-13Y'],
+      description: "Fun printed t-shirt for active kids",
+      sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
       features: [
-        'Vibrant graphics',
-        'Premium cotton',
-        'Color-fast fabric',
-        'Reinforced seams',
-        'Pre-shrunk material'
+        "Colorful prints",
+        "Soft material",
+        "Color-fast",
+        "Machine washable"
       ]
     },
     {
-      id: "3",
-      name: "Kids Summer T-Shirt",
-      category: "All T-shirts",
-      price: 24.99,
-      rating: 4.9,
+      id: 3,
+      name: "Kids Graphic T-Shirt",
+      category: "T-Shirts",
+      price: 649,
+      rating: 4.6,
       image: kid3,
-      description: "Breathable sport t-shirt for active children",
-      sizes: ['4-5Y', '6-7Y', '8-9Y', '10-11Y', '12-13Y'],
+      description: "Cool graphic design t-shirt",
+      sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
       features: [
-        'Moisture-wicking',
-        'Lightweight fabric',
-        'UV protection',
-        'Quick-dry technology',
-        'Odor-resistant'
+        "Trendy designs",
+        "Premium cotton",
+        "Comfortable fit",
+        "Long-lasting print"
+      ]
+    },
+    {
+      id: 4,
+      name: "Kids Striped T-Shirt",
+      category: "T-Shirts",
+      price: 549,
+      rating: 4.4,
+      image: kid4,
+      description: "Classic striped pattern t-shirt",
+      sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      features: [
+        "Striped pattern",
+        "Casual wear",
+        "Soft cotton blend",
+        "Easy maintenance"
+      ]
+    },
+    {
+      id: 5,
+      name: "Kids Sports T-Shirt",
+      category: "T-Shirts",
+      price: 699,
+      rating: 4.8,
+      image: kid5,
+      description: "Perfect for sports and outdoor activities",
+      sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      features: [
+        "Quick-dry fabric",
+        "Moisture-wicking",
+        "Lightweight",
+        "UV protection"
+      ]
+    },
+    {
+      id: 6,
+      name: "Kids Summer Collection",
+      category: "T-Shirts",
+      price: 599,
+      rating: 4.8,
+      image: kid6,
+      description: "Stylish summer collection for kids",
+      sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      features: [
+        "Premium cotton blend",
+        "Breathable fabric",
+        "UV protection",
+        "Easy to wash"
+      ]
+    },
+    {
+      id: 7,
+      name: "Kids Casual Collection",
+      category: "T-Shirts",
+      price: 649,
+      rating: 4.7,
+      image: kid7,
+      description: "Comfortable casual wear for kids",
+      sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      features: [
+        "Soft cotton material",
+        "Durable stitching",
+        "Fade resistant",
+        "Perfect for daily wear"
+      ]
+    },
+    {
+      id: 8,
+      name: "Kids Party Collection",
+      category: "T-Shirts",
+      price: 699,
+      rating: 4.9,
+      image: kid8,
+      description: "Perfect for special occasions",
+      sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      features: [
+        "Premium quality",
+        "Stylish design",
+        "Comfortable fit",
+        "Easy maintenance"
+      ]
+    },
+    {
+      id: 9,
+      name: "Kids Sports Collection",
+      category: "T-Shirts",
+      price: 549,
+      rating: 4.6,
+      image: kid9,
+      description: "Active wear for energetic kids",
+      sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      features: [
+        "Quick dry fabric",
+        "Sweat absorbent",
+        "Flexible material",
+        "Durable quality"
       ]
     }
   ];
 
-  const filteredProducts = tshirtProducts.filter(product =>
-    searchTerm === '' || 
+  // const categories = [
+  //   { id: 'all', name: 'All T-Shirts', path: '/kids/tshirt' },
+  //   { id: 'casual', name: 'Casual', path: '/kids/tshirt/casual' },
+  //   { id: 'sports', name: 'Sports', path: '/kids/tshirt/sports' },
+  //   { id: 'party', name: 'Party', path: '/kids/tshirt/party' }
+  // ];
+
+  const filteredProducts = products.filter(product => 
+    (searchTerm === '' || 
     product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    product.description.toLowerCase().includes(searchTerm.toLowerCase())
+    product.description.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
-  const handleProductClick = (product) => {
-    navigate(`/kids/tshirt/${product.id}`, {
-      state: { 
-        product: {
-          ...product,
-          quantity: 1,
-          selectedSize: '',
-          oldPrice: product.price * 1.2 // Adding a 20% markup for original price
-        }
-      }
-    });
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    const selectedCat = categories.find(cat => cat.id === category);
+    if (selectedCat) {
+      navigate(selectedCat.path);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 py-12">
       <KidsBanner />
+
       
-      <div className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-3xl font-bold text-center mb-8 font-outfit"
-          >
-            Kids T-Shirts Collection
-          </motion.h1>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-            {filteredProducts.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                onClick={() => handleProductClick(product)}
-                className="cursor-pointer transform transition-transform hover:scale-105"
-              >
-                <ProductCard 
-                  product={{
-                    ...product,
-                    oldPrice: product.price * 1.2 // Adding a 20% markup for original price
-                  }} 
-                />
-              </motion.div>
-            ))}
-          </div>
-
-          {filteredProducts.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-12"
+      <div className="container mx-auto px-4">
+      <div className="text-center mb-8">
+          <h1 className="text-3xl mt-8 font-bold text-gray-900">Explore T-Shirts</h1>
+          <p className="mt-4 text-lg text-gray-500">
+            Perfect for teams, events, and group activities
+          </p>
+        </div>
+        {/* <div className="flex flex-wrap gap-4 justify-center mb-8">
+          {categories.map((category) => (
+            <motion.button
+              key={category.id}
+              onClick={() => handleCategoryClick(category.id)}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                selectedCategory === category.id
+                  ? 'bg-blue-600 text-white shadow-lg'
+                  : 'bg-white text-gray-600 hover:bg-gray-100'
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <h3 className="text-xl text-gray-600">
-                No products found matching "{searchTerm}"
-              </h3>
-            </motion.div>
-          )}
+              {category.name}
+            </motion.button>
+          ))}
+        </div> */}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              onClick={() => navigate(`/kids/tshirt/${product.id}`)}
+            />
+          ))}
         </div>
       </div>
     </div>

@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { useCart } from '../context/CartContext'
 import { useFavorites } from '../context/FavoritesContext'
 import { useNavigate } from 'react-router-dom'
+import { FiHeart } from 'react-icons/fi'
+import { FaHeart, FaStar } from 'react-icons/fa'
 
 const ProductCard = ({ product, onClick }) => {
   const { addToCart } = useCart();
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
-  const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   
   const isProductFavorite = isFavorite(product.id);
@@ -48,94 +49,86 @@ const ProductCard = ({ product, onClick }) => {
       return;
     }
 
-    // Default navigation logic if no onClick provided
-    if (product.category?.includes('Hoodie')) {
-      navigate(`/hoodies/${product.id}`);
-    } else if (product.category?.includes('T-shirt')) {
+    // Category-specific routing
+    if (product.category?.toLowerCase().includes('t-shirt')) {
       navigate(`/tshirts/${product.id}`);
-    } else if(product.category?.includes('Mug')) {
+    } else if (product.category?.toLowerCase().includes('hoodie')) {
+      navigate(`/hoodies/${product.id}`);
+    } else if (product.category?.toLowerCase().includes('mug')) {
       navigate(`/mugs/${product.id}`);
-    } else if(product.category?.includes('Bottle')) {
+    } else if (product.category?.toLowerCase().includes('bottle')) {
       navigate(`/bottles/${product.id}`);
+    } else if (product.category?.toLowerCase().includes('kid')) {
+      navigate(`/kids/${product.id}`);
+    } else if (product.category?.toLowerCase().includes('corporate')) {
+      navigate(`/corporate/${product.id}`);
+    } else {
+      navigate(`/product/${product.id}`);
     }
   };
 
   return (
     <motion.div
+      className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      transition={{ duration: 0.3 }}
       onClick={handleClick}
-      className="group relative bg-white rounded-[2rem] overflow-hidden transform-gpu transition-all duration-500 cursor-pointer"
-      style={{
-        boxShadow: isHovered 
-          ? '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
-          : '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-      }}
     >
-      <div className="relative">
-        <div className="aspect-w-1 aspect-h-1 bg-gray-200">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-          />
-        </div>
-        <div className="absolute top-4 right-4">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={handleToggleFavorite}
-            className={`p-2 rounded-full ${
-              isProductFavorite ? 'bg-red-500 text-white' : 'bg-white text-gray-900'
-            } shadow-lg backdrop-blur-sm`}
-          >
-            <svg
-              className="w-6 h-6"
-              fill={isProductFavorite ? 'currentColor' : 'none'}
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              />
-            </svg>
-          </motion.button>
-        </div>
+      {/* Product Image */}
+      <div className="relative pt-[100%]">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="absolute top-0 left-0 w-full h-full object-contain p-4"
+        />
+        <button
+          onClick={handleToggleFavorite}
+          className="absolute top-2 right-2 p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow duration-200"
+        >
+          {isProductFavorite ? (
+            <FaHeart className="w-5 h-5 text-red-500" />
+          ) : (
+            <FiHeart className="w-5 h-5 text-gray-600" />
+          )}
+        </button>
       </div>
 
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-2">{product.name}</h3>
-        <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
+      {/* Product Info */}
+      <div className="p-4">
+        {/* Brand/Category */}
+        <div className="text-xs text-gray-500 mb-1">{product.category}</div>
         
-        <div className="flex items-baseline justify-between">
-          <div>
-            <span className="text-2xl font-bold text-gray-900">
-              {formatPrice(product.price)}
-            </span>
-            {product.oldPrice && (
-              <span className="ml-2 text-sm text-gray-500 line-through">
-                {formatPrice(product.oldPrice)}
-              </span>
-            )}
+        {/* Product Name */}
+        <h3 className="text-sm font-medium text-gray-900 mb-1 line-clamp-2">
+          {product.name}
+        </h3>
+
+        {/* Rating */}
+        <div className="flex items-center mb-2">
+          <div className="flex items-center bg-green-600 text-white text-xs px-1.5 py-0.5 rounded">
+            <span className="font-medium">{product.rating}</span>
+            <FaStar className="w-3 h-3 ml-0.5" />
           </div>
-          
-          <div className="flex items-center">
-            <span className="text-yellow-400 mr-1">★</span>
-            <span className="text-sm font-medium text-gray-600">
-              {product.rating}
-            </span>
-          </div>
+          <span className="text-xs text-gray-500 ml-2">(120)</span>
         </div>
 
+        {/* Price */}
+        <div className="flex items-baseline gap-2 mb-3">
+          <span className="text-lg font-medium text-gray-900">
+            {formatPrice(product.price)}
+          </span>
+          <span className="text-sm text-gray-500 line-through">
+            {formatPrice(Math.round(product.price * 1.2))}
+          </span>
+          <span className="text-xs text-green-600 font-medium">20% off</span>
+        </div>
+
+        {/* Add to Cart Button */}
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
           onClick={handleAddToCart}
-          className="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200"
+          className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors duration-200"
+          whileTap={{ scale: 0.95 }}
         >
           Add to Cart
         </motion.button>
