@@ -18,7 +18,6 @@ const ZipHoodiePage = () => {
       id: 1,
       name: "Classic Zip Hoodie",
       category: "Zip Hoodie",
-      price: 49.99,
       rating: 4.5,
       image: hoodie1,
       description: "Premium zip-up hoodie for everyday comfort"
@@ -27,7 +26,6 @@ const ZipHoodiePage = () => {
       id: 5,
       name: "Modern Zip Hoodie",
       category: "Zip Hoodie",
-      price: 59.99,
       rating: 4.7,
       image: hoodie3,
       description: "Modern style zip hoodie for urban look"

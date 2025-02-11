@@ -21,7 +21,6 @@ const MirrorDetails = () => {
       id: 1,
       name: "Designer Wall Mirror",
       category: "Wall Mirrors",
-      price: 1499,
       rating: 4.5,
       image: mirror1,
       description: "Elegant designer wall mirror with intricate patterns",
@@ -37,10 +36,9 @@ const MirrorDetails = () => {
       id: 2,
       name: "Heart Shape Mirror",
       category: "Decorative Mirrors",
-      price: 999,
       rating: 4.8,
       image: mirrorHeart,
-      description: "Beautiful heart-shaped mirror for romantic decor",
+      description: "Beautiful heart-shaped mirror with LED lights",
       features: [
         "Unique heart shape",
         "Perfect for gifting",
@@ -53,7 +51,6 @@ const MirrorDetails = () => {
       id: 3,
       name: "Modern Art Mirror",
       category: "Wall Mirrors",
-      price: 1999,
       rating: 4.7,
       image: mirror3,
       description: "Contemporary art mirror with unique design",
@@ -100,7 +97,7 @@ const MirrorDetails = () => {
     }
   };
   const handleBack = () => {
-    navigate(-1); // This will go back to the previous page
+    navigate(-2); // This will go back to the previous page
   };
 
 
@@ -166,7 +163,7 @@ const MirrorDetails = () => {
                 
                 {/* Price and Rating */}
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-3xl font-bold text-gray-900">₹{product.price}</p>
+                  <p className="text-3xl font-bold text-gray-900">Contact for Price</p>
                   <div className="flex items-center">
                     <span className="text-yellow-400">★</span>
                     <span className="ml-1 text-gray-600">{product.rating}/5</span>

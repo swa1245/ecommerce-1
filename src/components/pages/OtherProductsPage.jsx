@@ -127,24 +127,7 @@ const OtherProductsPage = () => {
     <div className="min-h-screen bg-gray-100">
       <OtherProductsBanner />
       
-      {/* Category Navigation */}
       <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => handleCategoryClick(category)}
-              className={`px-4 py-2 rounded-full ${
-                selectedCategory === category
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-white text-gray-700 hover:bg-blue-100'
-              } transition duration-300 ease-in-out`}
-            >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </button>
-          ))}
-        </div>
-
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredProducts.map((product, index) => (

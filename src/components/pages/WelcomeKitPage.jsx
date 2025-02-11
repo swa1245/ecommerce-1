@@ -14,7 +14,6 @@ const WelcomeKitPage = () => {
       id: 4,
       name: "Welcome Kit Bundle",
       category: "Employee Welcome Kit",
-      price: 49.99,
       rating: 4.7,
       image: "https://th.bing.com/th/id/OIP.OJEDMc2jdenw2W8CNs3eUwHaE8?rs=1&pid=ImgDetMain?w=500&auto=format",
       description: "Complete employee welcome kit"

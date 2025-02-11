@@ -39,18 +39,16 @@ const BabyRomperDetails = () => {
   };
 
   const handleBack = () => {
-    navigate(-1); // This will go back to the previous page
+    navigate(-2); // This will go back to the previous page
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Back Button */}
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+        <button
           onClick={handleBack}
-          className="mb-6 flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200"
+          className="mb-4 flex items-center text-gray-600 hover:text-gray-900"
         >
           <svg
             className="w-5 h-5 mr-2"
@@ -64,7 +62,7 @@ const BabyRomperDetails = () => {
             <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
           Back
-        </motion.button>
+        </button>
 
         <div className="lg:grid lg:grid-cols-2 lg:gap-8">
           {/* Product Image */}
@@ -89,11 +87,8 @@ const BabyRomperDetails = () => {
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 font-outfit">
               {product.name}
             </h1>
-            <div className="mt-3">
-              <h2 className="sr-only">Product information</h2>
-              <p className="text-3xl tracking-tight text-gray-900">
-                ${product.price}
-              </p>
+            <div className="mt-4">
+              <p className="text-3xl font-bold text-gray-900">Contact for Price</p>
             </div>
 
             <div className="mt-6">

@@ -21,7 +21,6 @@ const BottleDetails = () => {
       id: 1,
       name: "Premium Sublimation Bottle",
       category: "Sublimation",
-      price: 24.99,
       rating: 4.5,
       image: customizeBottle,
       description: "High-quality sublimation water bottle for custom designs",
@@ -44,7 +43,6 @@ const BottleDetails = () => {
       id: 2,
       name: "Insulated Temperature Bottle",
       category: "Temperature Bottle",
-      price: 29.99,
       rating: 4.8,
       image: tempBottle1,
       description: "Double-wall insulated temperature control bottle",
@@ -67,7 +65,6 @@ const BottleDetails = () => {
       id: 3,
       name: "Sport Sublimation Bottle",
       category: "Sublimation",
-      price: 22.99,
       rating: 4.6,
       image: tempBottle2,
       description: "Lightweight sublimation bottle for sports",
@@ -90,7 +87,6 @@ const BottleDetails = () => {
       id: 4,
       name: "Vacuum Insulated Bottle",
       category: "Temperature Bottle",
-      price: 34.99,
       rating: 4.7,
       image: vaccumBootle,
       description: "Premium vacuum insulated temperature bottle",
@@ -113,7 +109,6 @@ const BottleDetails = () => {
       id: 5,
       name: "Modern Temperature Bottle",
       category: "Temperature Bottle",
-      price: 32.99,
       rating: 4.9,
       image: tempBottle3,
       description: "Modern design temperature-controlled bottle",
@@ -136,7 +131,6 @@ const BottleDetails = () => {
       id: 6,
       name: "Elite Sublimation Bottle",
       category: "Sublimation",
-      price: 27.99,
       rating: 4.8,
       image: tempBottle4,
       description: "Elite grade sublimation bottle for professional use",
@@ -172,7 +166,7 @@ const BottleDetails = () => {
   };
 
   const handleBack = () => {
-    navigate(-1); // This will go back to the previous page
+    navigate(-2); // This will go back to the previous page
   };
 
   return (
@@ -221,9 +215,8 @@ const BottleDetails = () => {
             className="space-y-6"
           >
             <h1 className="text-3xl font-bold text-gray-900">{bottle.name}</h1>
-            <div className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-blue-600">${bottle.price}</span>
-              <span className="text-sm text-gray-500">/unit</span>
+            <div className="mt-4">
+              <span className="text-2xl font-bold text-blue-600">Contact for Price</span>
             </div>
             
             <div className="flex items-center">

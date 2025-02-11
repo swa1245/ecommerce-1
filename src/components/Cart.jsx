@@ -4,7 +4,22 @@ import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 
 const Cart = () => {
-  const { cartItems, removeFromCart, updateQuantity, getCartTotal } = useCart();
+  const { cartItems, removeFromCart, updateQuantity } = useCart();
+
+  const handleContactClick = () => {
+    // Format cart items for WhatsApp message
+    const itemsList = cartItems.map(item => 
+      `${item.title} (Quantity: ${item.quantity})`
+    ).join('\n');
+    
+    const message = `Hi, I'm interested in purchasing:\n\n${itemsList}\n\nPlease provide pricing details.`;
+    
+    // Create WhatsApp URL with pre-filled message
+    const whatsappUrl = `https://wa.me/+919881460549?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
+  };
 
   if (cartItems.length === 0) {
     return (
@@ -64,6 +79,7 @@ const Cart = () => {
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 font-outfit">{item.title}</h3>
                   <p className="text-sm text-gray-600 font-sans">{item.category}</p>
+                  <p className="text-sm font-medium text-blue-600 mt-1">Contact for Price</p>
                 </div>
               </div>
               
@@ -107,12 +123,6 @@ const Cart = () => {
                   </svg>
                 </motion.button>
               </div>
-              
-              {/* Price */}
-              <div className="text-right">
-                <p className="text-lg font-semibold font-outfit">${(item.price * item.quantity).toFixed(2)}</p>
-                <p className="text-sm text-gray-600 font-sans">${item.price.toFixed(2)} each</p>
-              </div>
             </motion.div>
           ))}
         </div>
@@ -120,20 +130,17 @@ const Cart = () => {
         {/* Cart Summary */}
         <div className="mt-8 p-6 bg-gray-50 rounded-xl">
           <div className="flex justify-between items-center mb-4">
-            <span className="text-gray-600">Subtotal</span>
-            <span className="text-lg font-semibold">${getCartTotal().toFixed(2)}</span>
-          </div>
-          <div className="flex justify-between items-center mb-6">
-            <span className="text-gray-600">Shipping</span>
-            <span className="text-gray-800">Calculated at checkout</span>
+            <span className="text-gray-600">Total Items</span>
+            <span className="text-lg font-semibold">{cartItems.reduce((total, item) => total + item.quantity, 0)}</span>
           </div>
           <motion.button
+            onClick={handleContactClick}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="w-full py-3 bg-blue-600 text-white rounded-xl font-medium 
               hover:bg-blue-700 transition-colors duration-300 shadow-lg shadow-blue-500/25"
           >
-            Proceed to Checkout
+            Contact for Pricing
           </motion.button>
         </div>
       </div>

@@ -17,7 +17,6 @@ const BootleDetails = () => {
     {
       id: "1",
       name: 'Classic Cotton T-Shirt',
-      price: 29.99,
       description: 'Premium cotton t-shirt with a comfortable fit and breathable fabric. Perfect for everyday wear.',
       colors: [
         { name: 'Pure Black', value: 'black', hex: '#000000' },
@@ -65,7 +64,6 @@ const BootleDetails = () => {
     {
       id: "2",
       name: 'Premium Graphic T-Shirt',
-      price: 34.99,
       description: 'Stylish graphic t-shirt with modern design prints. Made from soft, durable fabric.',
       colors: [
         { name: 'Pure Black', value: 'black', hex: '#000000' },
@@ -117,15 +115,15 @@ const BootleDetails = () => {
   const [selectedImage, setSelectedImage] = useState(currentTshirt.images[selectedColor][0]);
 
   const handleAddToCart = () => {
-    addToCart({
+    const cartItem = {
       id: currentTshirt.id,
-      title: currentTshirt.name,
-      price: currentTshirt.price,
+      name: currentTshirt.name,
       image: selectedImage,
-      color: selectedColor,
+      quantity: quantity,
       size: selectedSize,
-      quantity: quantity
-    });
+      color: selectedColor
+    };
+    addToCart(cartItem);
     
     toast.success('Added to cart!');
   };
@@ -202,14 +200,9 @@ const BootleDetails = () => {
               >
                 {currentTshirt.name}
               </motion.h1>
-              <motion.p 
-                className="text-2xl text-gray-900 mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-              >
-                ${currentTshirt.price}
-              </motion.p>
+              <div className="mt-4">
+                <p className="text-3xl font-bold text-gray-900">Contact for Price</p>
+              </div>
               <motion.p 
                 className="text-gray-600"
                 initial={{ opacity: 0, y: 20 }}
@@ -318,7 +311,7 @@ const BootleDetails = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              Add to Cart - ${(currentTshirt.price * quantity).toFixed(2)}
+              Add to Cart
             </motion.button>
           </div>
         </div>

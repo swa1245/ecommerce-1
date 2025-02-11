@@ -20,12 +20,10 @@ const RakhiDetails = () => {
   const rakhiProducts = {
     1: {
       id: 1,
-      name: "Premium Custom Rakhi",
-      category: "Premium Rakhis",
-      price: 299,
-      rating: 4.8,
+      name: "Custom Rakhi 1",
+      description: "Beautiful custom-designed Rakhi",
       image: customRakhi1,
-      description: "Beautifully crafted custom rakhi with premium materials",
+      rating: 4.8,
       features: [
         "Premium quality materials",
         "Customizable text",
@@ -36,12 +34,10 @@ const RakhiDetails = () => {
     },
     2: {
       id: 2,
-      name: "Personalized Photo Rakhi",
-      category: "Photo Rakhis",
-      price: 399,
-      rating: 4.9,
+      name: "Custom Rakhi 2",
+      description: "Elegant custom-made Rakhi",
       image: customRakhi2,
-      description: "Custom photo rakhi to make your bond special",
+      rating: 4.9,
       features: [
         "High-quality photo printing",
         "Water-resistant coating",
@@ -87,12 +83,18 @@ const RakhiDetails = () => {
       removeFromFavorites(product.id);
       toast.success('Removed from favorites!');
     } else {
-      addToFavorites(product);
+      addToFavorites({
+        id: product.id,
+        name: product.name,
+        image: product.image,
+        description: product.description,
+        category: 'Rakhis'
+      });
       toast.success('Added to favorites!');
     }
   };
   const handleBack = () => {
-    navigate(-1); // This will go back to the previous page
+    navigate(-2); // This will go back to the previous page
   };
 
   return (
@@ -156,12 +158,8 @@ const RakhiDetails = () => {
                 <p className="text-gray-600 text-lg mb-6">{product.description}</p>
                 
                 {/* Price and Rating */}
-                <div className="flex items-center justify-between mb-6">
-                  <p className="text-3xl font-bold text-gray-900">₹{product.price}</p>
-                  <div className="flex items-center">
-                    <span className="text-yellow-400">★</span>
-                    <span className="ml-1 text-gray-600">{product.rating}/5</span>
-                  </div>
+                <div className="mt-4">
+                  <p className="text-3xl font-bold text-gray-900">Contact for Price</p>
                 </div>
 
                 {/* Features */}

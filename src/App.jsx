@@ -57,6 +57,7 @@ import FamilyTshirtPage from './components/pages/FamilyTshirtPage';
 import CoupleTshirtPage from './components/pages/CoupleTshirtPage';
 import GroupTshirtPage from './components/pages/GroupTshirtPage';
 import CorporateTshirtPage from './components/pages/CorporateTshirtPage';
+import { Toaster } from 'react-hot-toast';
 
 const AppContent = () => {
   const location = useLocation();
@@ -131,11 +132,12 @@ const App = () => {
   return (
     <Router>
       <CartProvider>
-        <FavoritesProvider>
-          <SearchProvider>
+        <SearchProvider>
+          <FavoritesProvider>
             <AppContent />
-          </SearchProvider>
-        </FavoritesProvider>
+            <Toaster />
+          </FavoritesProvider>
+        </SearchProvider>
       </CartProvider>
     </Router>
   );

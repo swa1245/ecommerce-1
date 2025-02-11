@@ -21,7 +21,6 @@ const MugDetails = () => {
       id: "1",
       name: 'Classic White Mug',
       category: "Plain Mug",
-      price: 14.99,
       rating: 4.5,
       description: 'Simple and elegant white ceramic mug, perfect for daily use and custom designs.',
       sizes: ['11oz', '15oz'],
@@ -38,7 +37,6 @@ const MugDetails = () => {
       id: "2",
       name: 'Color Changing Magic Mug',
       category: "Magic Mug",
-      price: 19.99,
       rating: 4.8,
       description: 'Heat-sensitive color changing mug that reveals beautiful designs when filled with hot liquid.',
       sizes: ['11oz', '15oz'],
@@ -55,7 +53,6 @@ const MugDetails = () => {
       id: "3",
       name: 'Designer Printed Mug',
       category: "Printed Mug",
-      price: 17.99,
       rating: 4.6,
       description: 'Stylish printed ceramic mug with custom design, perfect for gifting and personal use.',
       sizes: ['11oz', '15oz'],
@@ -75,15 +72,13 @@ const MugDetails = () => {
   const [selectedImage, setSelectedImage] = useState(currentMug.images[0]);
 
   const handleAddToCart = () => {
-    addToCart({
+    const cartItem = {
       id: currentMug.id,
-      title: currentMug.name,
-      price: currentMug.price,
+      name: currentMug.name,
       image: selectedImage,
-      size: selectedSize,
       quantity: quantity
-    });
-    
+    };
+    addToCart(cartItem);
     toast.success('Added to cart!');
   };
 
@@ -149,14 +144,9 @@ const MugDetails = () => {
               >
                 {currentMug.name}
               </motion.h1>
-              <motion.p 
-                className="text-2xl text-gray-900 mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-              >
-                ${currentMug.price}
-              </motion.p>
+              <div className="mt-4">
+                <p className="text-3xl font-bold text-gray-900">Contact for Price</p>
+              </div>
               <motion.p 
                 className="text-gray-600"
                 initial={{ opacity: 0, y: 20 }}
@@ -232,9 +222,9 @@ const MugDetails = () => {
             <motion.button
               onClick={handleAddToCart}
               className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold 
-                 hover:bg-blue-700 transition-colors duration-300"
+                 hover:bg-blue-700 transition-colors"
             >
-              Add to Cart - ${(currentMug.price * quantity).toFixed(2)}
+              Add to Cart
             </motion.button>
           </div>
         </div>

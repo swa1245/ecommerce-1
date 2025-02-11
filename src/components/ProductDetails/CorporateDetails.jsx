@@ -11,7 +11,6 @@ const CorporateDetails = () => {
   const products = {
     1: {
       category: "ID Card and Lanyard",
-      price: 9.99,
       rating: 4.5,
       image: "https://www.mockupworld.co/wp-content/uploads/dynamic/2022/10/id-card-lanyard-free-mockup-psd-536x0-c-default.jpg?w=500&auto=format",
       description: "High-quality ID card with custom lanyard",
@@ -32,7 +31,6 @@ const CorporateDetails = () => {
     },
     2: {
       category: "Visiting Card",
-      price: 24.99,
       rating: 4.8,
       image: "https://th.bing.com/th/id/OIP.O5LlCxcxVSof_Foj8w43XwAAAA?rs=1&pid=ImgDetMain?w=500&auto=format",
       description: "Premium finish business cards, pack of 100",
@@ -53,8 +51,6 @@ const CorporateDetails = () => {
     },
     3: {
       name: "Executive Metal Pen Set",
-      // category: "Pens",
-      price: 29.99,
       rating: 4.6,
       image: pen,
       description: "Luxury metal pen set for professionals",
@@ -74,9 +70,7 @@ const CorporateDetails = () => {
       }
     },
     4:{
-      // name: "Welcome Kit Bundle",
       category: "Employee Welcome Kit",
-      price: 49.99,
       rating: 4.7,
       image: corporate,
       description: "Complete employee welcome kit",
@@ -97,7 +91,6 @@ const CorporateDetails = () => {
     },
     5:{
       category: "Diary",
-      price: 19.99,
       rating: 4.9,
       image: "https://th.bing.com/th/id/OIP.L7DwdbrsHah3mDtRxFcqdwAAAA?rs=1&pid=ImgDetMain?w=500&auto=format",
       description: "Premium leather-bound diary",
@@ -132,7 +125,7 @@ const CorporateDetails = () => {
           </button></>)
   }  
   const handleBack = () => {
-    navigate(-1); // This will go back to the previous page
+    navigate(-2); // This will go back to the previous page
   };
 
 
@@ -183,9 +176,8 @@ const CorporateDetails = () => {
               className="space-y-6"
             >
               <h1 className="text-3xl font-bold text-gray-900">{product.category}</h1>
-              <div className="flex items-center space-x-2">
-                <span className="text-2xl font-bold text-blue-600">${product.price}</span>
-                <span className="text-sm text-gray-500">/unit</span>
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-2xl font-bold text-blue-600">Contact for Price</span>
               </div>
               
               <div className="flex items-center">

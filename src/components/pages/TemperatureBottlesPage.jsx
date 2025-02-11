@@ -17,7 +17,6 @@ const TemperatureBottlesPage = () => {
       id: 2,
       name: "Insulated Temperature Bottle",
       category: "Temperature Bottle",
-      price: 29.99,
       rating: 4.8,
       image: bootle,
       description: "Double-wall insulated temperature control bottle"
@@ -26,7 +25,6 @@ const TemperatureBottlesPage = () => {
       id: 4,
       name: "Vacuum Insulated Bottle",
       category: "Temperature Bottle",
-      price: 34.99,
       rating: 4.7,
       image:vaccumBootle,
       description: "Premium vacuum insulated temperature bottle"

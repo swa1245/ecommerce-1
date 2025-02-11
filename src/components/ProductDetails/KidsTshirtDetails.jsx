@@ -20,17 +20,17 @@ const KidsTshirtDetails = () => {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState('2-3Y');
+  const [selectedColor, setSelectedColor] = useState('white');
 
   const products = [
     {
       id: 1,
       name: "Kids Cotton T-Shirt",
       category: "T-Shirts",
-      price: 499,
-      rating: 4.5,
-      image: kid1,
       description: "Comfortable cotton t-shirt for kids",
+      image: kid1,
       sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      colors: ["white", "blue", "pink"],
       features: [
         "100% cotton",
         "Breathable fabric",
@@ -42,11 +42,10 @@ const KidsTshirtDetails = () => {
       id: 2,
       name: "Kids Printed T-Shirt",
       category: "T-Shirts",
-      price: 599,
-      rating: 4.7,
-      image: kid2,
       description: "Fun printed t-shirt for active kids",
+      image: kid2,
       sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      colors: ["white", "blue", "pink"],
       features: [
         "Colorful prints",
         "Soft material",
@@ -58,11 +57,10 @@ const KidsTshirtDetails = () => {
       id: 3,
       name: "Kids Graphic T-Shirt",
       category: "T-Shirts",
-      price: 649,
-      rating: 4.6,
-      image: kid3,
       description: "Cool graphic design t-shirt",
+      image: kid3,
       sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      colors: ["white", "blue", "pink"],
       features: [
         "Trendy designs",
         "Premium cotton",
@@ -74,11 +72,10 @@ const KidsTshirtDetails = () => {
       id: 4,
       name: "Kids Striped T-Shirt",
       category: "T-Shirts",
-      price: 549,
-      rating: 4.4,
-      image: kid4,
       description: "Classic striped pattern t-shirt",
+      image: kid4,
       sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      colors: ["white", "blue", "pink"],
       features: [
         "Striped pattern",
         "Casual wear",
@@ -90,11 +87,10 @@ const KidsTshirtDetails = () => {
       id: 5,
       name: "Kids Sports T-Shirt",
       category: "T-Shirts",
-      price: 699,
-      rating: 4.8,
-      image: kid5,
       description: "Perfect for sports and outdoor activities",
+      image: kid5,
       sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      colors: ["white", "blue", "pink"],
       features: [
         "Quick-dry fabric",
         "Moisture-wicking",
@@ -106,11 +102,10 @@ const KidsTshirtDetails = () => {
       id: 6,
       name: "Kids Summer Collection",
       category: "T-Shirts",
-      price: 599,
-      rating: 4.8,
-      image: kid6,
       description: "Stylish summer collection for kids",
+      image: kid6,
       sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      colors: ["white", "blue", "pink"],
       features: [
         "Premium cotton blend",
         "Breathable fabric",
@@ -122,11 +117,10 @@ const KidsTshirtDetails = () => {
       id: 7,
       name: "Kids Casual Collection",
       category: "T-Shirts",
-      price: 649,
-      rating: 4.7,
-      image: kid7,
       description: "Comfortable casual wear for kids",
+      image: kid7,
       sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      colors: ["white", "blue", "pink"],
       features: [
         "Soft cotton material",
         "Durable stitching",
@@ -138,11 +132,10 @@ const KidsTshirtDetails = () => {
       id: 8,
       name: "Kids Party Collection",
       category: "T-Shirts",
-      price: 699,
-      rating: 4.9,
-      image: kid8,
       description: "Perfect for special occasions",
+      image: kid8,
       sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      colors: ["white", "blue", "pink"],
       features: [
         "Premium quality",
         "Stylish design",
@@ -154,11 +147,10 @@ const KidsTshirtDetails = () => {
       id: 9,
       name: "Kids Sports Collection",
       category: "T-Shirts",
-      price: 549,
-      rating: 4.6,
-      image: kid9,
       description: "Active wear for energetic kids",
+      image: kid9,
       sizes: ["2-3Y", "3-4Y", "4-5Y", "5-6Y"],
+      colors: ["white", "blue", "pink"],
       features: [
         "Quick dry fabric",
         "Sweat absorbent",
@@ -179,12 +171,15 @@ const KidsTshirtDetails = () => {
   }
 
   const handleAddToCart = () => {
-    addToCart({
-      ...product,
-      quantity,
-      selectedSize,
-      totalPrice: product.price * quantity
-    });
+    const cartItem = {
+      id: product.id,
+      name: product.name,
+      image: product.image,
+      quantity: quantity,
+      size: selectedSize,
+      color: selectedColor
+    };
+    addToCart(cartItem);
     navigate('/cart');
   };
 
@@ -223,25 +218,8 @@ const KidsTshirtDetails = () => {
               className="flex flex-col"
             >
               <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
-              <div className="flex items-center mb-4">
-                <span className="text-2xl font-bold text-blue-600">₹{product.price}</span>
-                <div className="ml-4 flex items-center">
-                  {[...Array(5)].map((_, index) => (
-                    <svg
-                      key={index}
-                      className={`w-5 h-5 ${
-                        index < Math.floor(product.rating)
-                          ? 'text-yellow-400'
-                          : 'text-gray-300'
-                      }`}
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                  <span className="ml-2 text-gray-600">({product.rating})</span>
-                </div>
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-2xl font-bold text-blue-600">Contact for Price</span>
               </div>
 
               <p className="text-gray-600 mb-6">{product.description}</p>
@@ -277,6 +255,27 @@ const KidsTshirtDetails = () => {
               </div>
 
               <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-2">Select Color:</h3>
+                <div className="flex flex-wrap gap-3">
+                  {product.colors.map((color) => (
+                    <motion.button
+                      key={color}
+                      onClick={() => setSelectedColor(color)}
+                      className={`px-4 py-2 rounded-full text-sm font-medium ${
+                        selectedColor === color
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                      }`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {color}
+                    </motion.button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-6">
                 <h3 className="text-lg font-semibold mb-2">Quantity:</h3>
                 <div className="flex items-center space-x-4">
                   <motion.button
@@ -303,14 +302,12 @@ const KidsTshirtDetails = () => {
                 </div>
               </div>
 
-              <motion.button
+              <button
                 onClick={handleAddToCart}
-                className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors"
               >
-                Add to Cart - ₹{product.price * quantity}
-              </motion.button>
+                Add to Cart
+              </button>
             </motion.div>
           </div>
         </div>

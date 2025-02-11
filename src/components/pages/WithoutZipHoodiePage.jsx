@@ -19,7 +19,6 @@ const WithoutZipHoodiePage = () => {
       id: 4,
       name: "Comfort Fit Hoodie",
       category: "Without Zip Hoodie",
-      price: 47.99,
       rating: 4.7,
       image: hoodie2,
       description: "Comfortable pullover hoodie for everyday wear"
@@ -28,7 +27,6 @@ const WithoutZipHoodiePage = () => {
       id: 6,
       name: "Oversized Comfort Hoodie",
       category: "Without Zip Hoodie",
-      price: 52.99,
       rating: 4.6,
       image: hoodie3,
       description: "Trendy oversized pullover hoodie"
@@ -37,7 +35,6 @@ const WithoutZipHoodiePage = () => {
       id: 8,
       name: "Premium Pullover Hoodie",
       category: "Without Zip Hoodie",
-      price: 57.99,
       rating: 4.9,
       image: hoodie4,
       description: "Premium quality pullover hoodie with perfect fit"

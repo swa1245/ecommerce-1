@@ -156,29 +156,54 @@ const Navbar = () => {
       transition={{ type: "spring", stiffness: 100 }}
       className="bg-white/95 backdrop-blur-sm w-full shadow-sm border-b border-gray-100 sticky top-0 z-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8">
         {/* Top Bar */}
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group">
-            <img
-              src="/public/logo.png"
-              alt="Copy Care Digitals"
-              className="h-12 sm:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-            />
-            <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 text-transparent bg-clip-text tracking-tight">Copy Care Digitals</span>
-          </Link>
+        <div className="flex items-center justify-between h-16">
+          {/* Desktop Logo - Hidden on Mobile */}
+          <div className="hidden md:flex items-center space-x-3">
+            <Link to="/" className="flex items-center space-x-2 group">
+              <img
+                src="/logo.png"
+                alt="Copy Care Digitals"
+                className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+              <span className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 text-transparent bg-clip-text tracking-tight">Copy Care Digitals</span>
+            </Link>
+          </div>
 
-          {/* Center: Search Bar */}
-          <div className="hidden md:flex flex-grow mx-4 lg:mx-12 max-w-2xl">
-            <div className="flex-1 max-w-lg mx-4">
+          {/* Mobile Layout */}
+          <div className="flex items-center justify-between w-full md:hidden">
+            {/* Left: Menu Button */}
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg hover:bg-gray-100"
+            >
+              <svg
+                className="h-6 w-6 text-gray-600"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {isMobileMenuOpen ? (
+                  <path d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+
+            {/* Middle: Search Bar */}
+            <div className="flex-1 max-w-xs mx-2">
               <div className="relative">
                 <input
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Search products..."
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  placeholder="Search..."
+                  className="w-full px-3 py-1.5 text-sm rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 />
                 {searchTerm && (
                   <button
@@ -190,30 +215,12 @@ const Navbar = () => {
                 )}
               </div>
             </div>
-          </div>
 
-          {/* Right Side Icons */}
-          <div className="flex items-center space-x-6">
-            {/* Mobile Search Toggle */}
-            <button 
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100/80 transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </button>
-
-            {/* Sign In */}
-            <Link to="/signin" className="group flex items-center gap-2 relative">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative"
-              >
+            {/* Right: Sign In and Cart */}
+            <div className="flex items-center space-x-3">
+              <Link to="/signin" className="p-2 rounded-lg hover:bg-gray-100">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-gray-600 group-hover:text-blue-500 transition-colors duration-200"
+                  className="w-6 h-6 text-gray-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -225,21 +232,12 @@ const Navbar = () => {
                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                   />
                 </svg>
-              </motion.div>
-              <span className="text-sm font-medium text-gray-600 group-hover:text-blue-500 transition-colors duration-200 hidden sm:inline">Sign in</span>
-            </Link>
+              </Link>
 
-            {/* Favorites */}
-            <Link to="/favorites" className="group flex items-center gap-2 relative">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative"
-              >
+              <Link to="/favorites" className="p-2 rounded-lg hover:bg-gray-100 relative">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-gray-600 group-hover:text-red-500 transition-colors duration-200"
-                  fill={favorites.length > 0 ? "currentColor" : "none"}
+                  className="w-6 h-6 text-gray-600"
+                  fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
@@ -251,27 +249,15 @@ const Navbar = () => {
                   />
                 </svg>
                 {favorites.length > 0 && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[11px] font-medium rounded-full h-4 w-4 flex items-center justify-center"
-                  >
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
                     {favorites.length}
-                  </motion.span>
+                  </span>
                 )}
-              </motion.div>
-            </Link>
+              </Link>
 
-            {/* Cart */}
-            <Link to="/cart" className="group flex items-center gap-2 relative">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative"
-              >
+              <Link to="/cart" className="p-2 rounded-lg hover:bg-gray-100 relative">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-gray-600 group-hover:text-green-500 transition-colors duration-200"
+                  className="w-6 h-6 text-gray-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -284,49 +270,100 @@ const Navbar = () => {
                   />
                 </svg>
                 {cartItemCount > 0 && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="absolute -top-1.5 -right-1.5 bg-green-500 text-white text-[11px] font-medium rounded-full h-4 w-4 flex items-center justify-center"
-                  >
+                  <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
                     {cartItemCount}
-                  </motion.span>
+                  </span>
                 )}
-              </motion.div>
-            </Link>
+              </Link>
+            </div>
           </div>
-        </div>
 
-        {/* Mobile Search Bar */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden py-4"
-            >
+          {/* Desktop Search and Icons - Hidden on Mobile */}
+          <div className="hidden md:flex flex-1 items-center justify-between ml-8">
+            <div className="flex-1 max-w-lg">
               <div className="relative">
                 <input
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Search products..."
-                  className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-4 py-2 text-base rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 />
+                {searchTerm && (
+                  <button
+                    onClick={() => setSearchTerm('')}
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-6 ml-6">
+              <Link to="/signin" className="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-gray-500 absolute top-1/2 left-4 transform -translate-y-1/2"
+                  className="w-5 h-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  />
                 </svg>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                <span className="text-sm font-medium">Sign In</span>
+              </Link>
+
+              <Link to="/favorites" className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 relative">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                  />
+                </svg>
+                <span className="text-sm font-medium">Favorites</span>
+                {favorites.length > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                    {favorites.length}
+                  </span>
+                )}
+              </Link>
+
+              <Link to="/cart" className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 relative">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+                <span className="text-sm font-medium">Cart</span>
+                {cartItemCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    {cartItemCount}
+                  </span>
+                )}
+              </Link>
+            </div>
+          </div>
+        </div>
 
         {/* Navigation Menu */}
         <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:block bg-white/95 backdrop-blur-sm absolute md:relative w-full left-0 top-full border-t border-gray-100 shadow-sm md:shadow-none z-50`}>
@@ -340,6 +377,7 @@ const Navbar = () => {
                   <Link 
                     to={item.path} 
                     className="flex items-center justify-between md:justify-start w-full px-4 py-2 hover:bg-gray-50/50 md:hover:bg-transparent md:px-0 md:py-4 text-[15px] tracking-wide transition-colors duration-200 font-medium md:hover:text-blue-600"
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <span className="relative">
                       {item.name}
@@ -366,29 +404,30 @@ const Navbar = () => {
                   {/* Dropdown Menu */}
                   {item.subitems && item.subitems.length > 0 && (
                     <div className="md:absolute md:left-1/2 md:-translate-x-1/2 md:top-full md:pt-2 w-full md:w-64 hidden group-hover:block">
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="bg-white rounded-lg shadow-lg border border-gray-100 py-2 md:backdrop-blur-sm md:bg-white/95"
-                    >
-                      {item.subitems.map((subitem, subIndex) => (
-                        <Link
-                          key={subIndex}
-                          to={subitem.path}
-                          className="block px-4 py-3 hover:bg-gray-50/50 group/item"
-                        >
-                          <p className="text-[14px] font-medium text-gray-700 group-hover/item:text-blue-600 transition-colors duration-200">
-                            {subitem.name}
-                          </p>
-                          {subitem.description && (
-                            <p className="text-[12px] text-gray-500 mt-0.5 group-hover/item:text-gray-600">
-                              {subitem.description}
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="bg-white rounded-lg shadow-lg border border-gray-100 py-2 md:backdrop-blur-sm md:bg-white/95"
+                      >
+                        {item.subitems.map((subitem, subIndex) => (
+                          <Link
+                            key={subIndex}
+                            to={subitem.path}
+                            className="block px-4 py-3 hover:bg-gray-50/50 group/item"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            <p className="text-[14px] font-medium text-gray-700 group-hover/item:text-blue-600 transition-colors duration-200">
+                              {subitem.name}
                             </p>
-                          )}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  </div>
+                            {subitem.description && (
+                              <p className="text-[12px] text-gray-500 mt-0.5 group-hover/item:text-gray-600">
+                                {subitem.description}
+                              </p>
+                            )}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    </div>
                   )}
                 </div>
               ))}
@@ -396,49 +435,45 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile menu */}
-        <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden bg-white border-t border-gray-200`}>
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {menuItems.map((item, index) => (
-              <div key={index} className="relative">
-                <Link
-                  to={item.path}
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
-                >
-                  {item.name}
-                </Link>
-                {item.subitems && item.subitems.length > 0 && (
-                  <div className="pl-4">
-                    {item.subitems.map((subitem, subIndex) => (
-                      <Link
-                        key={subIndex}
-                        to={subitem.path}
-                        className="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50"
-                      >
-                        {subitem.name}
-                      </Link>
-                    ))}
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="absolute top-full left-0 right-0 bg-white shadow-lg rounded-b-lg py-2 px-4 z-50"
+            >
+              <nav className="space-y-2">
+                {menuItems.map((item) => (
+                  <div key={item.name} className="py-2">
+                    <Link
+                      to={item.path}
+                      className="block text-gray-800 hover:text-blue-600 transition-colors duration-200"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                    {item.subitems && item.subitems.length > 0 && (
+                      <div className="pl-4 mt-1 space-y-1">
+                        {item.subitems.map((subitem) => (
+                          <Link
+                            key={subitem.name}
+                            to={subitem.path}
+                            className="block text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {subitem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Favorites Sidebar */}
-        {isFavoritesOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 100 }}
-            className="fixed inset-0 z-50"
-          >
-            <div className="absolute inset-0 bg-black bg-opacity-50" onClick={() => setIsFavoritesOpen(false)} />
-            <div className="absolute right-0 top-0">
-              <FavoritesPage onClose={() => setIsFavoritesOpen(false)} />
-            </div>
-          </motion.div>
-        )}
+                ))}
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.nav>
   );

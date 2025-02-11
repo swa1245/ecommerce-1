@@ -14,7 +14,6 @@ const SublimationBottlesPage = () => {
       id: 1,
       name: "Premium Sublimation Bottle",
       category: "Sublimation",
-      price: 24.99,
       rating: 4.5,
       image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&auto=format",
       description: "High-quality sublimation water bottle"
@@ -23,7 +22,6 @@ const SublimationBottlesPage = () => {
       id: 3,
       name: "Sport Sublimation Bottle",
       category: "Sublimation",
-      price: 22.99,
       rating: 4.6,
       image: "https://images.unsplash.com/photo-1589365278144-c9e705f843ba?w=500&auto=format",
       description: "Lightweight sublimation bottle for sports"

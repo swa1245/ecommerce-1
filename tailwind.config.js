@@ -22,6 +22,15 @@ export default {
         'wider': '0.05em',
         'widest': '0.1em',
       },
+      utilities: {
+        '.scrollbar-hide': {
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+          '&::-webkit-scrollbar': {
+            display: 'none'
+          }
+        }
+      }
     },
   },
   plugins: [

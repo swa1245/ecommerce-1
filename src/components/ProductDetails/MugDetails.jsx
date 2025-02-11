@@ -30,7 +30,6 @@ const MugDetails = () => {
       id: 1,
       name: "11 Oz Tea Mug",
       category: "Plain Mugs",
-      price: 299,
       rating: 4.5,
       image: teaMug11oz,
       description: "Premium 11 Oz ceramic tea mug for your daily brew",
@@ -46,7 +45,6 @@ const MugDetails = () => {
       id: 2,
       name: "11 Oz Tea Mug (Design 2)",
       category: "Plain Mugs",
-      price: 299,
       rating: 4.5,
       image: teaMug11oz3,
       description: "Elegant 11 Oz ceramic tea mug with modern design",
@@ -62,7 +60,6 @@ const MugDetails = () => {
       id: 3,
       name: "11 Oz Tea Mug (Design 3)",
       category: "Plain Mugs",
-      price: 299,
       rating: 4.5,
       image: teaMug11oz4,
       description: "Stylish 11 Oz ceramic tea mug perfect for gifting",
@@ -78,7 +75,6 @@ const MugDetails = () => {
       id: 4,
       name: "3-Tone Magic Mug",
       category: "Three Tone Mugs",
-      price: 349,
       rating: 4.8,
       image: threeToneMug,
       description: "Color-changing mug with three-tone effect",
@@ -94,7 +90,6 @@ const MugDetails = () => {
       id: 5,
       name: "3-Tone Magic Mug (Design 2)",
       category: "Three Tone Mugs",
-      price: 349,
       rating: 4.8,
       image: threeToneMug2,
       description: "Stunning three-tone magic mug with unique pattern",
@@ -110,7 +105,6 @@ const MugDetails = () => {
       id: 6,
       name: "3-Tone Magic Mug (Design 3)",
       category: "Three Tone Mugs",
-      price: 349,
       rating: 4.8,
       image: threeToneMug3,
       description: "Beautiful three-tone magic mug with special design",
@@ -126,7 +120,6 @@ const MugDetails = () => {
       id: 7,
       name: "6 Oz Tea Mug",
       category: "Plain Mugs",
-      price: 249,
       rating: 4.6,
       image: teaMug6oz,
       description: "Compact 6 Oz ceramic mug for tea and coffee",
@@ -142,7 +135,6 @@ const MugDetails = () => {
       id: 8,
       name: "6 Oz Tea Mug (Design 2)",
       category: "Plain Mugs",
-      price: 249,
       rating: 4.6,
       image: teaMug6oz2,
       description: "Elegant 6 Oz ceramic mug with unique pattern",
@@ -158,7 +150,6 @@ const MugDetails = () => {
       id: 9,
       name: "6 Oz Tea Mug (Design 3)",
       category: "Plain Mugs",
-      price: 249,
       rating: 4.6,
       image: teaMug6oz3,
       description: "Stylish 6 Oz ceramic mug with modern design",
@@ -174,7 +165,6 @@ const MugDetails = () => {
       id: 10,
       name: "Magic Mug with Heart Handle",
       category: "Magic Mugs",
-      price: 399,
       rating: 4.9,
       image: magicMugHeart,
       description: "Color-changing mug with lovely heart handle",
@@ -190,7 +180,6 @@ const MugDetails = () => {
       id: 11,
       name: "Golden Premium Mug",
       category: "Transparent Mugs",
-      price: 449,
       rating: 4.9,
       image: goldenMug,
       description: "Luxurious golden-finished ceramic mug",
@@ -206,7 +195,6 @@ const MugDetails = () => {
       id: 12,
       name: "Silver Premium Mug",
       category: "Transparent Mugs",
-      price: 449,
       rating: 4.9,
       image: silverMug,
       description: "Elegant silver-finished ceramic mug",
@@ -222,7 +210,6 @@ const MugDetails = () => {
       id: 13,
       name: "White Heart Handle Mug",
       category: "Plain Mugs",
-      price: 349,
       rating: 4.7,
       image: whiteHeartMug,
       description: "White ceramic mug with decorative heart handle",
@@ -238,7 +225,6 @@ const MugDetails = () => {
       id: 14,
       name: "Couple Mug Set",
       category: "Plain Mugs",
-      price: 599,
       rating: 5.0,
       image: coupleMug,
       description: "Perfect pair of mugs for couples",
@@ -254,7 +240,6 @@ const MugDetails = () => {
       id: 15,
       name: "Custom Printed Mug",
       category: "Plain Mugs",
-      price: 399,
       rating: 4.8,
       image: printedMug,
       description: "Personalized mug with custom printing",
@@ -270,7 +255,6 @@ const MugDetails = () => {
       id: 16,
       name: "Classic White Mug",
       category: "Plain Mugs",
-      price: 249,
       rating: 4.5,
       image: whiteMug,
       description: "Classic white ceramic mug for everyday use",
@@ -377,28 +361,29 @@ const MugDetails = () => {
 
                 <div className="mt-8">
                   <div className="flex items-center">
-                    <span className="text-3xl font-bold text-gray-900">₹{mug.price}</span>
-                    <div className="ml-4">
-                      <div className="flex items-center space-x-2">
-                        <button
-                          onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                          className="p-1 rounded-full bg-gray-100 hover:bg-gray-200"
-                        >
-                          <svg className="h-6 w-6 text-gray-600" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M20 12H4"></path>
-                          </svg>
-                        </button>
-                        <span className="text-xl font-semibold">{quantity}</span>
-                        <button
-                          onClick={() => setQuantity(quantity + 1)}
-                          className="p-1 rounded-full bg-gray-100 hover:bg-gray-200"
-                        >
-                          <svg className="h-6 w-6 text-gray-600" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M12 4v16m8-8H4"></path>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
+                    <p className="text-3xl font-bold text-gray-900">Contact for Price</p>
+                  </div>
+                </div>
+
+                <div className="mt-8">
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="p-1 rounded-full bg-gray-100 hover:bg-gray-200"
+                    >
+                      <svg className="h-6 w-6 text-gray-600" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M20 12H4"></path>
+                      </svg>
+                    </button>
+                    <span className="text-xl font-semibold">{quantity}</span>
+                    <button
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="p-1 rounded-full bg-gray-100 hover:bg-gray-200"
+                    >
+                      <svg className="h-6 w-6 text-gray-600" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M12 4v16m8-8H4"></path>
+                      </svg>
+                    </button>
                   </div>
                 </div>
 

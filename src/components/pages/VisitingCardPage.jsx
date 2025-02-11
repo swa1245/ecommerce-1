@@ -11,13 +11,20 @@ const VisitingCardPage = () => {
 
   const visitingCardProducts = [
     {
-      id: 2,
-      name: "Premium Business Cards",
+      id: 1,
+      name: "Standard Visiting Card",
       category: "Visiting Card",
-      price: 24.99,
       rating: 4.8,
       image: "https://th.bing.com/th/id/OIP.O5LlCxcxVSof_Foj8w43XwAAAA?rs=1&pid=ImgDetMain?w=500&auto=format",
-      description: "Premium finish business cards, pack of 100"
+      description: "Professional visiting cards, pack of 100"
+    },
+    {
+      id: 2,
+      name: "Premium Visiting Card",
+      category: "Visiting Card",
+      rating: 4.8,
+      image: "https://th.bing.com/th/id/OIP.O5LlCxcxVSof_Foj8w43XwAAAA?rs=1&pid=ImgDetMain?w=500&auto=format",
+      description: "Premium finish visiting cards, pack of 100"
     }
   ];
 

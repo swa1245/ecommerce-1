@@ -24,7 +24,6 @@ const FurPillowDetails = () => {
       id: 1,
       name: "Classic Pillow Cover",
       category: "Plain Pillows",
-      price: 499,
       rating: 4.5,
       image: pillowCover,
       description: "Soft and luxurious plain pillow cover for maximum comfort",
@@ -40,7 +39,6 @@ const FurPillowDetails = () => {
       id: 2,
       name: "Heart Shape Pillow",
       category: "Special Pillows",
-      price: 699,
       rating: 4.8,
       image: heartPillow,
       description: "Elegantly designed heart-shaped pillow for special occasions",
@@ -56,7 +54,6 @@ const FurPillowDetails = () => {
       id: 3,
       name: "Printed Design Pillow",
       category: "Designer Pillows",
-      price: 899,
       rating: 4.7,
       image: printedPillow,
       description: "Beautiful printed design pillow for your home decor",
@@ -72,7 +69,6 @@ const FurPillowDetails = () => {
       id: 4,
       name: "Custom Pattern Pillow",
       category: "Designer Pillows",
-      price: 799,
       rating: 4.9,
       image: pillowDesign,
       description: "Customizable pattern pillow to match your style",
@@ -88,7 +84,6 @@ const FurPillowDetails = () => {
       id: 5,
       name: "Premium Teddy Pillow",
       category: "Premium Pillows",
-      price: 999,
       rating: 5.0,
       image: teddy,
       description: "Premium quality teddy pillow for ultimate comfort",
@@ -104,7 +99,6 @@ const FurPillowDetails = () => {
       id: 6,
       name: "Luxury Teddy Pillow",
       category: "Premium Pillows",
-      price: 799,
       rating: 4.8,
       image: teddy2,
       description: "Luxury teddy pillow with extra softness",
@@ -141,7 +135,7 @@ const FurPillowDetails = () => {
     toast.success('Added to cart!');
   };
   const handleBack = () => {
-    navigate(-1); // This will go back to the previous page
+    navigate(-2); // This will go back to the previous page
   };
 
   const handleFavoriteClick = () => {
@@ -218,7 +212,9 @@ const FurPillowDetails = () => {
                 
                 {/* Price and Rating */}
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-3xl font-bold text-gray-900">₹{product.price}</p>
+                  <div className="mt-4">
+                    <p className="text-3xl font-bold text-gray-900">Contact for Price</p>
+                  </div>
                   <div className="flex items-center">
                     <span className="text-yellow-400">★</span>
                     <span className="ml-1 text-gray-600">{product.rating}/5</span>

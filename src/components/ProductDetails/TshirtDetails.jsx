@@ -45,7 +45,6 @@ const TshirtDetails = () => {
       id: 1,
       name: "Classic Family T-Shirt Set",
       category: "Family T-Shirts",
-      price: 1499,
       rating: 4.8,
       image: familyTshirt1,
       description: "Matching family t-shirt set with custom prints",
@@ -61,7 +60,6 @@ const TshirtDetails = () => {
       id: 2,
       name: "Family Vacation T-Shirt Set",
       category: "Family T-Shirts",
-      price: 1599,
       rating: 4.9,
       image: familyTshirt2,
       description: "Perfect matching set for family vacations",
@@ -77,7 +75,6 @@ const TshirtDetails = () => {
       id: 3,
       name: "Family Celebration T-Shirt Set",
       category: "Family T-Shirts",
-      price: 1699,
       rating: 4.7,
       image: familyTshirt3,
       description: "Special occasion family matching t-shirts",
@@ -93,7 +90,6 @@ const TshirtDetails = () => {
       id: 4,
       name: "Premium Family T-Shirt Collection",
       category: "Family T-Shirts",
-      price: 1799,
       rating: 4.9,
       image: familyTshirt4,
       description: "Luxury family matching t-shirt collection",
@@ -107,10 +103,9 @@ const TshirtDetails = () => {
     },
     // Couple T-shirts
     {
-      id: 5,
+      id: 50,
       name: "Classic Couple T-Shirt Set",
       category: "Couple T-Shirts",
-      price: 999,
       rating: 4.9,
       image: coupleTshirt1,
       description: "Perfect matching set for couples",
@@ -126,7 +121,6 @@ const TshirtDetails = () => {
       id: 6,
       name: "Love Theme Couple T-Shirts",
       category: "Couple T-Shirts",
-      price: 1099,
       rating: 4.8,
       image: coupleTshirt2,
       description: "Romantic themed matching t-shirts for couples",
@@ -142,7 +136,6 @@ const TshirtDetails = () => {
       id: 7,
       name: "Anniversary Special T-Shirts",
       category: "Couple T-Shirts",
-      price: 1199,
       rating: 4.9,
       image: coupleTshirt3,
       description: "Special edition anniversary couple t-shirts",
@@ -158,7 +151,6 @@ const TshirtDetails = () => {
       id: 8,
       name: "Designer Couple Collection",
       category: "Couple T-Shirts",
-      price: 1299,
       rating: 4.7,
       image: coupleTshirt4,
       description: "Designer collection for stylish couples",
@@ -175,7 +167,6 @@ const TshirtDetails = () => {
       id: 9,
       name: "Team Event T-Shirts",
       category: "Group T-Shirts",
-      price: 599,
       rating: 4.7,
       image: groupTshirt1,
       description: "Perfect for team events and gatherings",
@@ -191,7 +182,6 @@ const TshirtDetails = () => {
       id: 10,
       name: "College Group T-Shirts",
       category: "Group T-Shirts",
-      price: 549,
       rating: 4.8,
       image: groupTshirt2,
       description: "Ideal for college groups and clubs",
@@ -207,7 +197,6 @@ const TshirtDetails = () => {
       id: 11,
       name: "Sports Team T-Shirts",
       category: "Group T-Shirts",
-      price: 649,
       rating: 4.9,
       image: groupTshirt3,
       description: "Professional sports team t-shirts",
@@ -223,7 +212,6 @@ const TshirtDetails = () => {
       id: 12,
       name: "Event Staff T-Shirts",
       category: "Group T-Shirts",
-      price: 499,
       rating: 4.6,
       image: groupTshirt4,
       description: "Distinctive t-shirts for event staff",
@@ -240,7 +228,6 @@ const TshirtDetails = () => {
       id: 13,
       name: "Professional Polo T-Shirt",
       category: "Corporate T-Shirts",
-      price: 899,
       rating: 4.8,
       image: corporateTshirt5,
       description: "Premium polo t-shirts for corporate wear",
@@ -256,7 +243,6 @@ const TshirtDetails = () => {
       id: 14,
       name: "Corporate Event T-Shirts",
       category: "Corporate T-Shirts",
-      price: 799,
       rating: 4.7,
       image: corporateTshirt6,
       description: "Perfect for corporate events and team building",
@@ -272,7 +258,6 @@ const TshirtDetails = () => {
       id:31,
       name: "Collar T-Shirt",
       category: "Corporate T-Shirts",
-      price: 599,
       rating: 4.5,
       image: corporateTshirt9,
       description: "T-shirts with a stylish collar",
@@ -288,7 +273,6 @@ const TshirtDetails = () => {
       id: 15,
       name: "Executive Collection",
       category: "Corporate T-Shirts",
-      price: 999,
       rating: 4.9,
       image: corporateTshirt7,
       description: "Premium collection for executives",
@@ -304,7 +288,6 @@ const TshirtDetails = () => {
       id: 16,
       name: "Company Uniform T-Shirts",
       category: "Corporate T-Shirts",
-      price: 699,
       rating: 4.6,
       image: corporateTshirt8,
       description: "Standard company uniform t-shirts",
@@ -319,7 +302,6 @@ const TshirtDetails = () => {
       id: 17,
       name: "Family Vacation T-Shirt Set",
       category: "Family T-Shirts",
-      price: 1599,
       rating: 4.9,
       image: img5,
       description: "Perfect matching set for family vacations",
@@ -334,7 +316,6 @@ const TshirtDetails = () => {
       id: 18,
       name: "Family Event T-Shirt Set",
       category: "Family T-Shirts",
-      price: 1499,
       rating: 4.8,
       image: groupTshirt5,
       description: "Matching family t-shirt set with custom prints",
@@ -349,7 +330,6 @@ const TshirtDetails = () => {
       id:21,
       name: "Family Vacation T-Shirt Set",
       category: "Family T-Shirts",
-      price: 1599,
       rating: 4.9,
       image: groupTshirt6,
       description: "Perfect matching set for family vacations",
@@ -364,7 +344,6 @@ const TshirtDetails = () => {
       id:22,
       name: "Family Event T-Shirt Set",
       category: "Family T-Shirts",
-      price: 1499,
       rating: 4.8,
       image: groupTshirt5,
       description: "Matching family t-shirt set with custom prints",
@@ -406,9 +385,28 @@ const TshirtDetails = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gray-50">
       <ScrollTop />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Back Button */}
+        <button
+          onClick={() => navigate(-1)}
+          className="mb-4 flex items-center text-gray-600 hover:text-gray-900"
+        >
+          <svg
+            className="w-5 h-5 mr-2"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back
+        </button>
+
         <div className="flex flex-col md:flex-row gap-8">
           {/* Image Section */}
           <motion.div
@@ -432,26 +430,9 @@ const TshirtDetails = () => {
             <h1 className="text-3xl font-bold mb-4">{tshirt.name}</h1>
             <p className="text-gray-600 mb-4">{tshirt.description}</p>
             
-            <div className="mb-6">
-              <span className="text-2xl font-semibold">₹{tshirt.price}</span>
-              <div className="flex items-center mt-2">
-                <div className="flex items-center">
-                  {[...Array(5)].map((_, index) => (
-                    <svg
-                      key={index}
-                      className={`w-5 h-5 ${
-                        index < Math.floor(tshirt.rating)
-                          ? 'text-yellow-400'
-                          : 'text-gray-300'
-                      }`}
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                  <span className="ml-2 text-gray-600">({tshirt.rating})</span>
-                </div>
+            <div className="mt-4 flex flex-col gap-4">
+              <div className="flex items-center gap-4">
+                <span className="text-2xl font-semibold">Contact for Price</span>
               </div>
             </div>
 

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useCart } from '../../context/CartContext';
+import { useFavorites } from '../../context/FavoritesContext';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { toast } from 'react-hot-toast';
 
 // Import baby set images
 import babySet1 from '../assests/New borne baby sets.jpg';
@@ -15,6 +18,7 @@ const NewBornSetDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState('0-3M');
 
@@ -23,7 +27,6 @@ const NewBornSetDetails = () => {
       id: 1,
       name: "5-Piece Cotton Baby Set",
       category: "New Born Sets",
-      price: 999,
       rating: 4.8,
       image: babySet1,
       description: "Soft cotton essentials for your newborn",
@@ -44,7 +47,6 @@ const NewBornSetDetails = () => {
       id: 2,
       name: "7-Piece Essential Baby Set",
       category: "New Born Sets",
-      price: 1299,
       rating: 4.9,
       image: babySet2,
       description: "Complete starter kit for newborns",
@@ -66,7 +68,6 @@ const NewBornSetDetails = () => {
       id: 3,
       name: "3-Piece Organic Cotton Set",
       category: "New Born Sets",
-      price: 799,
       rating: 4.7,
       image: babySet3,
       description: "Eco-friendly essentials for your baby",
@@ -87,7 +88,6 @@ const NewBornSetDetails = () => {
       id: 4,
       name: "4-Piece Winter Baby Set",
       category: "New Born Sets",
-      price: 1499,
       rating: 4.8,
       image: babySet4,
       description: "Warm and cozy winter essentials",
@@ -109,7 +109,6 @@ const NewBornSetDetails = () => {
       id: 5,
       name: "6-Piece Gift Set",
       category: "New Born Sets",
-      price: 1999,
       rating: 5.0,
       image: babySet5,
       description: "Perfect gift for new parents",
@@ -132,7 +131,6 @@ const NewBornSetDetails = () => {
       id: 6,
       name: "8-Piece Deluxe Set",
       category: "New Born Sets",
-      price: 2499,
       rating: 4.9,
       image: babySet6,
       description: "Complete luxury set for your newborn",
@@ -164,17 +162,53 @@ const NewBornSetDetails = () => {
   }
 
   const handleAddToCart = () => {
-    addToCart({
-      ...product,
-      quantity,
+    const cartItem = {
+      id: product.id,
+      name: product.name,
+      image: product.image,
+      quantity: quantity,
       size: selectedSize,
-      totalPrice: product.price * quantity
-    });
+    };
+    addToCart(cartItem);
+  };
+
+  const handleAddToFavorites = () => {
+    const favoriteItem = {
+      id: product.id,
+      name: product.name,
+      image: product.image,
+    };
+    addToFavorites(favoriteItem);
+    toast.success('Added to favorites!');
+  };
+
+  const handleRemoveFromFavorites = () => {
+    removeFromFavorites(product.id);
+    toast.success('Removed from favorites!');
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Back Button */}
+        <button
+          onClick={() => navigate(-1)}
+          className="mb-4 flex items-center text-gray-600 hover:text-gray-900"
+        >
+          <svg
+            className="w-5 h-5 mr-2"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back
+        </button>
+
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2">
             <motion.div
@@ -199,12 +233,8 @@ const NewBornSetDetails = () => {
               <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
               <p className="text-lg text-gray-600 mb-6">{product.description}</p>
 
-              <div className="flex items-center mb-6">
-                <span className="text-2xl font-bold text-blue-600">₹{product.price}</span>
-                <div className="ml-4 flex items-center">
-                  <span className="text-yellow-400 text-xl">★</span>
-                  <span className="ml-1 text-gray-600">{product.rating}</span>
-                </div>
+              <div className="mt-4">
+                <span className="text-2xl font-bold text-blue-600">Contact for Price</span>
               </div>
 
               <div className="mb-6">
@@ -266,16 +296,27 @@ const NewBornSetDetails = () => {
               <div className="flex space-x-4">
                 <button
                   onClick={handleAddToCart}
-                  className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-colors duration-200"
+                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                  Add to Cart - ₹{product.price * quantity}
+                  Add to Cart
                 </button>
-                <button
-                  onClick={() => navigate(-1)}
-                  className="bg-gray-100 text-gray-800 px-8 py-3 rounded-full hover:bg-gray-200 transition-colors duration-200"
-                >
-                  Back
-                </button>
+                {isFavorite(product.id) ? (
+                  <button
+                    onClick={handleRemoveFromFavorites}
+                    className="w-full bg-red-600 text-white py-3 px-6 rounded-lg hover:bg-red-700 transition-colors"
+                  >
+                    <AiFillHeart className="text-lg" />
+                    Remove from Favorites
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleAddToFavorites}
+                    className="w-full bg-gray-100 text-gray-800 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors"
+                  >
+                    <AiOutlineHeart className="text-lg" />
+                    Add to Favorites
+                  </button>
+                )}
               </div>
             </motion.div>
           </div>

@@ -57,8 +57,11 @@ const CapDetails = () => {
             className="mt-10 lg:mt-0 px-4"
           >
             <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
-            <div className="mt-4">
-              <p className="text-2xl font-bold text-indigo-600">₹{product.price}</p>
+            <div className="mt-6">
+              <h2 className="text-2xl font-bold text-gray-900">{product.name}</h2>
+              <div className="mt-3">
+                <p className="text-2xl font-bold text-indigo-600">Contact for Price</p>
+              </div>
               <div className="flex items-center mt-2">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, index) => (

@@ -19,9 +19,8 @@ const HoodieDetails = () => {
     {
       id: "1",
       name: 'Classic Comfort Hoodie',
-      price: 59.99,
-      image: hoodie1,
       description: 'Experience ultimate comfort with our premium cotton blend hoodie. Features a modern fit, adjustable drawstring hood, and kangaroo pocket.',
+      image: hoodie1,
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
       features: [
         'Premium cotton blend material',
@@ -34,9 +33,8 @@ const HoodieDetails = () => {
     {
       id: "2",
       name: 'Pullover Hoodie',
-      price: 49.99,
-      image: hoodie2,
       description: 'Cozy pullover hoodie perfect for casual wear.',
+      image: hoodie2,
       sizes: ['S', 'M', 'L', 'XL'],
       features: [
         'Soft cotton fabric',
@@ -49,9 +47,8 @@ const HoodieDetails = () => {
     {
       id: "3",
       name: 'Sport Zip Hoodie',
-      price: 64.99,
-      image: hoodie3,
       description: 'Athletic zip hoodie for active lifestyle.',
+      image: hoodie3,
       sizes: ['S', 'M', 'L', 'XL'],
       features: [
         'Moisture-wicking fabric',
@@ -64,9 +61,8 @@ const HoodieDetails = () => {
     {
       id: "4",
       name: 'Oversized Hoodie',
-      price: 54.99,
-      image: hoodie4,
       description: 'Without Zip Hoodie.',
+      image: hoodie4,
       sizes: ['S', 'M', 'L', 'XL'],
       features: [
         'Oversized fit',
@@ -91,8 +87,7 @@ const HoodieDetails = () => {
   const handleAddToCart = () => {
     addToCart({
       id: currentHoodie.id,
-      title: currentHoodie.name,
-      price: currentHoodie.price,
+      name: currentHoodie.name,
       image: currentHoodie.image,
       size: selectedSize,
       quantity: quantity
@@ -105,13 +100,27 @@ const HoodieDetails = () => {
   };
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }} 
-      animate={{ opacity: 1 }} 
-      exit={{ opacity: 0 }}
-      className="min-h-screen bg-gray-100 py-8"
-    >
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Back Button */}
+        <button
+          onClick={handleBack}
+          className="mb-4 flex items-center text-gray-600 hover:text-gray-900"
+        >
+          <svg
+            className="w-5 h-5 mr-2"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back
+        </button>
+
         <motion.div 
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -242,15 +251,14 @@ const HoodieDetails = () => {
                 transition={{ duration: 0.5, delay: 1 }}
                 className="mt-8 flex items-center justify-between"
               >
-                <motion.span 
-                  className="text-2xl font-bold text-gray-900"
-                  key={quantity}
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
+                <motion.div 
+                  className="mt-4"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 1 }}
                 >
-                  ${(currentHoodie.price * quantity).toFixed(2)}
-                </motion.span>
+                  <p className="text-3xl font-bold text-gray-900">Contact for Price</p>
+                </motion.div>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -263,27 +271,8 @@ const HoodieDetails = () => {
             </motion.div>
           </div>
         </motion.div>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleBack}
-          className="mb-6 flex items-center text-gray-600 hover:text-gray-900 transition-colors duration-200"
-        >
-          <svg
-            className="w-5 h-5 mr-2"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          Back
-        </motion.button>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

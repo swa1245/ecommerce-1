@@ -15,7 +15,7 @@ const CoupleTshirtPage = () => {
 
   const coupleTshirts = [
     {
-      id: 5,
+      id: 50,
       name: "Classic Couple T-Shirt Set",
       category: "Couple T-Shirts",
       price: 999,

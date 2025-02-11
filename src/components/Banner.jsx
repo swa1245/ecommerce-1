@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
+import image from "./assests/valentinesday.png"
 
 const Banner = () => {
   const settings = {
@@ -16,12 +17,12 @@ const Banner = () => {
 
   const images = [
     {
-      src: "https://i.pinimg.com/736x/4e/f1/6f/4ef16fe0fea3f5d8f2eff1a6d289e31f.jpg?ga=GA1.1.283813969.1731781095&semt=ais_hybrid",
+      src: image,
       alt: "Fashionable women having fun",
       caption: "Express Yourself with Trendy Styles",
     },
     {
-      src: "https://img.freepik.com/free-photo/purchasing-shop-buying-selling-teade_53876-134043.jpg",
+      src: "https://i.pinimg.com/736x/4e/f1/6f/4ef16fe0fea3f5d8f2eff1a6d289e31f.jpg?ga=GA1.1.283813969.1731781095&semt=ais_hybrid",
       alt: "Purchase sale discount",
       caption: "Exciting Discounts Just for You!",
     },

@@ -10,7 +10,7 @@ const SearchResults = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [sortBy, setSortBy] = useState('relevance');
+  const [sortOption, setSortOption] = useState('name-asc');
 
   // Combine all products from different categories
   useEffect(() => {
@@ -23,7 +23,6 @@ const SearchResults = () => {
           name: "Classic Cotton T-Shirt",
           category: "T-shirts",
           subcategory: "Round Neck",
-          price: 24.99,
           rating: 4.5,
           tags: ["cotton", "casual", "comfortable"],
           image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&auto=format",
@@ -35,7 +34,6 @@ const SearchResults = () => {
           name: "Classic Zip Hoodie",
           category: "Hoodies",
           subcategory: "Zip-Up",
-          price: 49.99,
           rating: 4.8,
           tags: ["hoodie", "zip-up", "casual"],
           image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&auto=format",
@@ -47,7 +45,6 @@ const SearchResults = () => {
           name: "Classic Coffee Mug",
           category: "Mugs",
           subcategory: "Ceramic",
-          price: 14.99,
           rating: 4.7,
           tags: ["mug", "coffee", "ceramic"],
           image: "https://images.unsplash.com/photo-1577937927367-c3e33d7a57b0?w=500&auto=format",
@@ -59,7 +56,6 @@ const SearchResults = () => {
           name: "Premium Sublimation Bottle",
           category: "Bottles",
           subcategory: "Sublimation",
-          price: 24.99,
           rating: 4.5,
           tags: ["bottle", "sublimation", "water"],
           image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&auto=format",
@@ -71,7 +67,6 @@ const SearchResults = () => {
           name: "ID Card and Lanyard",
           category: "Corporate",
           subcategory: "ID Card",
-          price: 9.99,
           rating: 4.5,
           tags: ["id card", "lanyard", "corporate"],
           image: "https://www.mockupworld.co/wp-content/uploads/dynamic/2022/10/id-card-lanyard-free-mockup-psd-536x0-c-default.jpg?w=500&auto=format",
@@ -83,7 +78,6 @@ const SearchResults = () => {
           name: "Kids Graphic T-Shirt",
           category: "Kids",
           subcategory: "Graphic Tee",
-          price: 19.99,
           rating: 4.6,
           tags: ["kids", "t-shirt", "graphic"],
           image: "https://images.unsplash.com/photo-1519278409-1f56fdda7fe5?w=500&auto=format",
@@ -125,13 +119,13 @@ const SearchResults = () => {
   // Sort function
   const sortProducts = (products, sortType) => {
     switch (sortType) {
-      case 'price-low':
-        return [...products].sort((a, b) => a.price - b.price);
-      case 'price-high':
-        return [...products].sort((a, b) => b.price - a.price);
+      case 'name-asc':
+        return [...products].sort((a, b) => a.name.localeCompare(b.name));
+      case 'name-desc':
+        return [...products].sort((a, b) => b.name.localeCompare(a.name));
       case 'rating':
         return [...products].sort((a, b) => b.rating - a.rating);
-      default: // 'relevance'
+      default:
         return products;
     }
   };
@@ -147,10 +141,10 @@ const SearchResults = () => {
     const filtered = searchAndFilterProducts(allProducts, searchTerm, selectedCategory);
     
     // Then sort them
-    const sorted = sortProducts(filtered, sortBy);
+    const sorted = sortProducts(filtered, sortOption);
     
     setFilteredProducts(sorted);
-  }, [searchTerm, allProducts, selectedCategory, sortBy, navigate]);
+  }, [searchTerm, allProducts, selectedCategory, sortOption, navigate]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -177,14 +171,13 @@ const SearchResults = () => {
 
             {/* Sort Options */}
             <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
+              value={sortOption}
+              onChange={(e) => setSortOption(e.target.value)}
               className="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             >
-              <option value="relevance">Sort by Relevance</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="rating">Highest Rated</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
+              <option value="rating">Rating</option>
             </select>
           </div>
         </div>
